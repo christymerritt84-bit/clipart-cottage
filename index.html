@@ -246,7 +246,7 @@ Create cohesive Etsy-style watercolor clipart collections ✨
 <div class="section">
 <div class="label">Collection Theme</div>
 
-<select id="theme">
+<select id="theme" onchange="syncTheme()">
 
 <option>Honey Bears</option>
 <option>Baby Safari</option>
@@ -631,7 +631,107 @@ a.download="premium-watercolor-clipart-prompt.txt";
 a.click();
 
 }
+function syncTheme(){
 
+let theme =
+document.getElementById("theme").value;
+
+let elements =
+document.getElementById("elements");
+
+let palette =
+document.getElementById("palette");
+
+let layout =
+document.getElementById("layout");
+
+let details =
+document.getElementById("details");
+
+let style =
+document.getElementById("style");
+
+
+// BABY SAFARI
+if(theme.includes("Safari")){
+
+elements.selectedIndex = 3;
+
+palette.value =
+"Earthy Boho";
+
+layout.value =
+"premium Etsy clipart arrangement";
+
+details.value =
+"cohesive matching illustration set";
+
+style.value =
+"Vintage Nursery Watercolor";
+
+}
+
+
+// ICE CREAM
+else if(theme.includes("Ice Cream")){
+
+elements.selectedIndex = 9;
+
+palette.value =
+"Soft Pastels";
+
+layout.value =
+"sticker sheet composition";
+
+details.value =
+"soft whimsical aesthetic";
+
+style.value =
+"Whimsical Pastel Watercolor";
+
+}
+
+
+// COWBOY
+else if(theme.includes("Cowboy")){
+
+elements.selectedIndex = 14;
+
+palette.value =
+"Warm Neutrals";
+
+layout.value =
+"airy balanced composition";
+
+details.value =
+"storybook charm";
+
+style.value =
+"Muted Boho Watercolor";
+
+}
+
+
+// ROSES
+else if(theme.includes("Rose")){
+
+elements.selectedIndex = 18;
+
+palette.value =
+"Blush Pink and Cream";
+
+layout.value =
+"storybook spread composition";
+
+details.value =
+"delicate ink outlines";
+
+style.value =
+"Luxury Watercolor Illustration";
+
+}
+
+}
 </script>
 
 </body>
