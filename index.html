@@ -550,85 +550,195 @@ Built for creators making viral printable products 💛
 
 <script>
 
-function val(id){
-return document.getElementById(id).value;
-}
+const collections = {
+
+  "Honey Bears": {
+    elements: [
+      "watercolor honey bear",
+      "honey jar",
+      "dripping honey dipper",
+      "bees",
+      "wildflowers",
+      "pussy willow branches",
+      "honeycomb",
+      "sleeping bear",
+      "bear holding honey",
+      "floral wreath",
+      "yellow flowers"
+    ],
+    palette: "warm honey beige and soft yellow",
+    vibe: "storybook nursery"
+  },
+
+  "Baby Safari": {
+    elements: [
+      "baby elephant",
+      "baby giraffe",
+      "baby lion",
+      "baby zebra",
+      "palm leaves",
+      "safari jeep",
+      "neutral balloons",
+      "acacia tree",
+      "watercolor clouds",
+      "neutral stars",
+      "safari florals",
+      "baby monkey"
+    ],
+    palette: "neutral beige and earthy tan",
+    vibe: "luxury safari nursery"
+  },
+
+  "Cowboy": {
+    elements: [
+      "cowboy boots",
+      "western hat",
+      "horseshoe",
+      "highland cow",
+      "lasso rope",
+      "cow print stars",
+      "cactus",
+      "desert florals",
+      "wood wagon wheel",
+      "cowboy horse",
+      "bandana bow",
+      "western sun"
+    ],
+    palette: "warm western neutrals",
+    vibe: "western watercolor"
+  },
+
+  "Ice Cream": {
+    elements: [
+      "ice cream cone",
+      "popsicle",
+      "sprinkles",
+      "waffle cone",
+      "ice cream truck",
+      "strawberry milkshake",
+      "cherries",
+      "pastel sweets",
+      "whipped cream",
+      "candy stars",
+      "cotton candy clouds",
+      "bow accents"
+    ],
+    palette: "pastel pink blue and cream",
+    vibe: "sweet pastel watercolor"
+  },
+
+  "Roses": {
+    elements: [
+      "pink roses",
+      "rose bouquet",
+      "rose petals",
+      "vintage ribbon",
+      "pearl accents",
+      "lace bow",
+      "garden florals",
+      "gold frame",
+      "butterflies",
+      "floral wreath",
+      "coquette bow",
+      "tea cup"
+    ],
+    palette: "soft pink and cream",
+    vibe: "romantic coquette watercolor"
+  },
+
+  "Farm Animals": {
+    elements: [
+      "baby cow",
+      "baby pig",
+      "baby duck",
+      "baby chicken",
+      "hay bale",
+      "barn",
+      "sunflowers",
+      "wood fence",
+      "tractor",
+      "farm florals",
+      "cow print bow",
+      "country boots"
+    ],
+    palette: "soft farmhouse neutrals",
+    vibe: "storybook farm watercolor"
+  },
+
+  "Fairy Garden": {
+    elements: [
+      "fairy wings",
+      "mushrooms",
+      "glitter stars",
+      "magic wand",
+      "butterflies",
+      "wildflowers",
+      "moon accents",
+      "tiny fairy house",
+      "sparkles",
+      "ivy vines",
+      "forest bunny",
+      "fairy dust"
+    ],
+    palette: "soft lavender and sage",
+    vibe: "enchanted watercolor fantasy"
+  },
+
+  "Ballet Bows": {
+    elements: [
+      "ballet slippers",
+      "pink bows",
+      "tulle ribbon",
+      "pearls",
+      "sparkles",
+      "ballerina bunny",
+      "soft florals",
+      "stage curtain",
+      "gold stars",
+      "pink hearts",
+      "satin ribbon",
+      "tiara"
+    ],
+    palette: "blush pink and ivory",
+    vibe: "soft ballerina watercolor"
+  }
+
+};
+
 
 function generatePrompt(){
 
-let theme = val("theme");
-let elements = val("elements");
-let style = val("style");
-let palette = val("palette");
-let layout = val("layout");
-let details = val("details");
-let background = val("background");
-let finish = val("finish");
-let custom = val("custom");
+  const theme = document.getElementById("collectionTheme").value;
 
-let prompt = `
-A cohesive watercolor clipart collection sheet featuring ${theme.toLowerCase()}, ${elements},
+  const collection = collections[theme];
 
-${style},
-${palette} color palette,
+  const randomElements =
+    collection.elements
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 8)
+      .join(", ");
 
-hand painted watercolor textures,
-commercial clipart design,
-cute whimsical aesthetic,
-soft vintage storybook style,
+  const prompt = `
+A highly detailed watercolor clipart collection sheet featuring ${randomElements},
 
-all elements separated and evenly spaced,
-${layout},
-isolated on ${background},
-
-matching cohesive illustration collection,
-transparent PNG style,
-professional printable quality,
-delicate ink outlines,
-minimal soft shadows,
-high detail watercolor clipart,
-clean edges,
-airy composition,
-Etsy bestseller aesthetic,
-4k ultra detailed,
-
-${details},
-${finish}.
-
-${custom ? "Additional elements: " + custom + "." : ""}
+${collection.vibe},
+soft watercolor textures,
+hand painted storybook illustration style,
+cohesive matching collection,
+isolated on white background,
+premium printable PNG clipart,
+matching aesthetic elements,
+professional Etsy clipart quality,
+${collection.palette},
+clean soft shadows,
+adorable whimsical composition,
+high resolution.
 `;
 
-document.getElementById("result").innerText = prompt;
-
-}
-
-function copyPrompt(){
-
-navigator.clipboard.writeText(
-document.getElementById("result").innerText
-);
-
-alert("Prompt copied ✨");
-
-}
-
-function downloadPrompt(){
-
-let text=document.getElementById("result").innerText;
-
-let blob=new Blob([text],{type:"text/plain"});
-
-let a=document.createElement("a");
-
-a.href=URL.createObjectURL(blob);
-
-a.download="premium-watercolor-clipart-prompt.txt";
-
-a.click();
+  document.getElementById("output").value = prompt;
 
 }
 
 </script>
-
 </body>
 </html>
