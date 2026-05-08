@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premium Watercolor Clipart Generator</title>
+<title>🎨 Clipart Cottage</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -17,531 +17,300 @@ box-sizing:border-box;
 
 body{
 font-family:'Poppins',sans-serif;
-background:#f6f1eb;
-padding:30px;
-color:#5d4d42;
+background:#fff8fb;
+padding:40px;
+color:#444;
 }
 
 .container{
-max-width:1450px;
+max-width:1400px;
 margin:auto;
+}
+
+.header{
+text-align:center;
+margin-bottom:40px;
+}
+
+.header h1{
+font-size:58px;
+font-weight:700;
+color:#ff4fa0;
+margin-bottom:10px;
+}
+
+.header p{
+font-size:18px;
+color:#777;
+}
+
+.generator{
 display:grid;
 grid-template-columns:1fr 420px;
-gap:24px;
+gap:30px;
+align-items:start;
 }
 
 .panel{
 background:white;
-padding:34px;
-border-radius:34px;
-box-shadow:0 10px 40px rgba(0,0,0,.07);
+border-radius:35px;
+padding:35px;
+box-shadow:0 10px 40px rgba(255,105,180,.08);
+border:2px solid #ffe4f0;
 }
 
-.preview{
-background:white;
-padding:20px;
-border-radius:34px;
-box-shadow:0 10px 40px rgba(0,0,0,.07);
-height:fit-content;
+.preview-panel{
 position:sticky;
 top:20px;
 }
 
-h1{
-font-size:46px;
-text-align:center;
-margin-bottom:10px;
-color:#9d7a64;
-}
-
-.sub{
-text-align:center;
-color:#aa9789;
-margin-bottom:35px;
-font-size:15px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-}
-
 .section{
-margin-bottom:20px;
+margin-bottom:35px;
 }
 
-.label{
-font-size:12px;
+.section-title{
+font-size:24px;
 font-weight:700;
-letter-spacing:1px;
-text-transform:uppercase;
-margin-bottom:8px;
-color:#a0806d;
+margin-bottom:18px;
+color:#ff4fa0;
 }
 
-select,input{
+.chips{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+}
+
+.chip{
+padding:12px 18px;
+background:#fff;
+border:2px solid #ffd6e8;
+border-radius:999px;
+cursor:pointer;
+transition:.2s;
+font-size:15px;
+font-weight:500;
+}
+
+.chip:hover{
+background:#ff4fa0;
+color:white;
+transform:translateY(-2px);
+}
+
+.chip.active{
+background:#ff4fa0;
+color:white;
+border-color:#ff4fa0;
+}
+
+.preview{
+background:#fff7fb;
+border-radius:30px;
+padding:20px;
+border:2px dashed #ffd6e8;
+}
+
+.preview img{
 width:100%;
-padding:15px;
-border-radius:16px;
-border:2px solid #eee1d5;
-background:#fffdfa;
-font-size:14px;
-font-family:'Poppins',sans-serif;
+border-radius:25px;
+display:block;
+}
+
+textarea{
+width:100%;
+height:280px;
+border:none;
 outline:none;
+resize:none;
+background:#fff7fb;
+border-radius:25px;
+padding:25px;
+font-size:15px;
+line-height:1.7;
+margin-top:25px;
+border:2px solid #ffe4f0;
+font-family:inherit;
+}
+
+.button-group{
+display:flex;
+gap:15px;
+margin-top:25px;
+flex-wrap:wrap;
 }
 
 button{
-width:100%;
-padding:16px;
 border:none;
+padding:16px 28px;
 border-radius:18px;
-font-size:15px;
-font-weight:700;
+font-size:16px;
+font-weight:600;
 cursor:pointer;
-margin-top:12px;
 transition:.2s;
-font-family:'Poppins',sans-serif;
+}
+
+.generate-btn{
+background:linear-gradient(135deg,#ff4fa0,#ff89c2);
+color:white;
+flex:1;
+}
+
+.copy-btn{
+background:#fff;
+border:2px solid #ffd6e8;
+color:#ff4fa0;
 }
 
 button:hover{
 transform:translateY(-2px);
 }
 
-.generate{
-background:linear-gradient(90deg,#d8a980,#f1cfad);
-color:white;
-}
-
-.copy{
-background:linear-gradient(90deg,#91b59f,#aecfba);
-color:white;
-}
-
-.download{
-background:linear-gradient(90deg,#9bb8d7,#b5cde8);
-color:white;
-}
-
-.result{
-margin-top:22px;
-padding:24px;
-border-radius:24px;
-background:#fff8f1;
-border:2px dashed #ead7c8;
-min-height:260px;
-line-height:1.8;
-white-space:pre-line;
-font-size:14px;
-}
-
-.preview-frame{
-background:#fff9f4;
-padding:18px;
-border-radius:24px;
-border:2px solid #f0dfd0;
-}
-
-.preview img{
+select{
 width:100%;
-height:420px;
-object-fit:cover;
+padding:16px;
 border-radius:18px;
+border:2px solid #ffd6e8;
+background:white;
+font-size:16px;
+margin-top:10px;
+font-family:inherit;
 }
 
-.preview-title{
-font-size:22px;
-font-weight:700;
-text-align:center;
-margin-top:18px;
-color:#8e6c59;
-}
-
-.badges{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:10px;
-margin-top:15px;
-}
-
-.badge{
-padding:8px 14px;
-border-radius:999px;
-background:#fff3e8;
-font-size:12px;
-font-weight:700;
-color:#a67b62;
-}
-
-.sales{
-margin-top:20px;
-background:#fff9f4;
-padding:20px;
-border-radius:24px;
-border:1px solid #f1dfd1;
-}
-
-.sales-title{
-font-size:18px;
+.small-title{
+font-size:15px;
 font-weight:700;
 margin-bottom:12px;
-text-align:center;
-color:#9b735c;
-}
-
-.example{
-background:white;
-padding:12px;
-border-radius:14px;
-margin-bottom:10px;
-font-size:12px;
-border:1px solid #f0e3d8;
-}
-
-.footer{
-text-align:center;
-margin-top:18px;
-font-size:13px;
-color:#b19d90;
+color:#888;
+text-transform:uppercase;
+letter-spacing:1px;
 }
 
 @media(max-width:1000px){
 
-.container{
+.generator{
 grid-template-columns:1fr;
 }
 
-.grid{
-grid-template-columns:1fr;
-}
-
-.preview{
-position:relative;
-top:0;
+.header h1{
+font-size:42px;
 }
 
 }
 
 </style>
 </head>
-
 <body>
 
 <div class="container">
 
-<!-- LEFT -->
+<div class="header">
+<h1>🎨 Clipart Cottage</h1>
+<p>Create dreamy watercolor clipart collections that actually match ✨</p>
+</div>
+
+<div class="generator">
+
 <div class="panel">
 
-<h1>🎨 Watercolor Clipart Generator</h1>
-
-<div class="sub">
-Create cohesive Etsy-style watercolor clipart collections ✨
-</div>
-
-<div class="grid">
-
-<!-- THEME -->
 <div class="section">
-<div class="label">Collection Theme</div>
 
-<select id="theme">
+<div class="section-title">Collection Theme</div>
+
+<select id="collectionTheme">
 
 <option>Honey Bears</option>
-<option>Woodland Animals</option>
-<option>Baby Safari Animals</option>
+<option>Baby Safari</option>
+<option>Cowboy</option>
+<option>Ice Cream</option>
+<option>Roses</option>
 <option>Farm Animals</option>
-
-<option>Western Cowboy</option>
-<option>Cowgirl Boots & Bows</option>
-<option>Vintage Rodeo</option>
-
-<option>Ice Cream Shop</option>
-<option>Pastel Ice Cream Sundaes</option>
-<option>Sweet Treats Bakery</option>
-<option>Candy Land</option>
-<option>Strawberry Dessert Party</option>
-
-<option>Vintage Roses</option>
-<option>Pink Rose Garden</option>
-<option>Wildflower Bouquet</option>
-<option>Floral Cottagecore</option>
-<option>Sunflower Meadow</option>
-
-<option>Cozy Kitchen</option>
-<option>Forest Mushrooms</option>
-<option>Tea Party</option>
-<option>Ballet Princess</option>
-<option>Baby Dinosaurs</option>
-<option>Spring Bunny</option>
-
-<option>Vintage Christmas</option>
-<option>Boho Rainbow</option>
-<option>Cute Highland Cow</option>
-<option>Duck Pond</option>
-<option>Baby Forest Friends</option>
-<option>Vintage Winnie Style Bears</option>
+<option>Fairy Garden</option>
+<option>Ballet Bows</option>
 
 </select>
+
 </div>
 
-<!-- CLIPART ELEMENTS -->
 <div class="section">
-<div class="label">Clipart Elements</div>
 
-<select id="elements">
+<div class="section-title">Art Style</div>
 
-<!-- HONEY -->
-<option>bees, honey jars, honeycomb, wildflowers</option>
-<option>gold honey drips, florals, bears</option>
-<option>beehives, yellow florals, wreaths</option>
+<div class="chips">
 
-<!-- ICE CREAM -->
-<option>ice cream cones, sprinkles, cherries, sundaes</option>
-<option>waffle cones, popsicles, candy sprinkles</option>
-<option>milkshakes, cupcakes, pastel sweets</option>
-<option>soft serve cones, whipped cream, cherries</option>
-<option>ice cream trucks, candy, macarons</option>
-<option>pastel desserts, donuts, milkshakes</option>
+<div class="chip active">Watercolor</div>
+<div class="chip">Vintage Storybook</div>
+<div class="chip">Soft Nursery</div>
+<div class="chip">Whimsical</div>
+<div class="chip">Cottagecore</div>
+<div class="chip">Hand Painted</div>
+<div class="chip">Neutral Boho</div>
+<div class="chip">Luxury Nursery</div>
 
-<!-- COWBOY -->
-<option>cowboy hats, boots, rope, western florals</option>
-<option>lassos, horseshoes, denim bows</option>
-<option>bandanas, cacti, rustic stars</option>
-<option>cow print bows, boots, roses</option>
-
-<!-- ROSES -->
-<option>roses, peonies, eucalyptus, lace bows</option>
-<option>vintage florals, pearl ribbons, leaves</option>
-<option>garden flowers, butterflies, vines</option>
-
-<!-- WOODLAND -->
-<option>mushrooms, butterflies, flowers</option>
-<option>forest trees, woodland animals, acorns</option>
-<option>ferns, moss, mushrooms, butterflies</option>
-
-<!-- BABY -->
-<option>baby bottles, rattles, pacifiers</option>
-<option>bows, stuffed animals, baby blocks</option>
-<option>cribs, stars, moons, clouds</option>
-
-<!-- MERMAID -->
-<option>seashells, pearls, coral, starfish</option>
-<option>ocean bubbles, fish, mermaid tails</option>
-<option>underwater florals, seaweed, treasure chests</option>
-
-<!-- BAKERY -->
-<option>cakes, cupcakes, cookies, donuts</option>
-<option>pastries, strawberries, macarons</option>
-<option>icing drips, baking tools, sweets</option>
-
-<!-- CHRISTMAS -->
-<option>gingerbread cookies, hot cocoa, candy canes</option>
-<option>Christmas trees, ornaments, bows</option>
-<option>snowflakes, stockings, holiday sweets</option>
-
-<!-- FAIRY -->
-<option>fairies, mushrooms, sparkles</option>
-<option>magic wands, stars, butterflies</option>
-<option>enchanted florals, moonlight vines</option>
-
-<!-- GENERAL -->
-<option>bows, ribbons, florals</option>
-<option>hearts, sparkles, gems</option>
-<option>wood signs, lanterns, baskets</option>
-<option>books, tea cups, candles</option>
-
-</select>
 </div>
 
-<!-- ART STYLE -->
+</div>
+
 <div class="section">
-<div class="label">Art Style</div>
 
-<select id="style">
+<div class="section-title">Layout Style</div>
 
-<option>Vintage Nursery Watercolor</option>
-<option>Soft Storybook Illustration</option>
-<option>Hand Painted Watercolor</option>
-<option>Muted Boho Watercolor</option>
-<option>Whimsical Pastel Watercolor</option>
-<option>Classic Cottagecore Watercolor</option>
-<option>Soft Pencil Watercolor</option>
-<option>Delicate Ink and Watercolor</option>
-<option>Vintage Children's Book Illustration</option>
+<div class="chips">
 
-<option>Soft Gouache Painting</option>
-<option>Fine Art Watercolor</option>
-<option>Botanical Watercolor</option>
-<option>Luxury Watercolor Illustration</option>
-<option>French Vintage Illustration</option>
+<div class="chip active">Collection Sheet</div>
+<div class="chip">Sticker Sheet</div>
+<div class="chip">Seamless Pattern</div>
+<div class="chip">Elements Pack</div>
+<div class="chip">Border Layout</div>
+<div class="chip">Wreath Composition</div>
 
-</select>
 </div>
 
-<!-- COLORS -->
+</div>
+
 <div class="section">
-<div class="label">Color Palette</div>
 
-<select id="palette">
+<div class="section-title">Color Palette</div>
 
-<option>Warm Neutrals</option>
-<option>Soft Pastels</option>
-<option>Muted Vintage</option>
-<option>Earthy Boho</option>
-<option>Cream and Beige</option>
-<option>Dusty Blue and Gold</option>
-<option>Soft Sage Green</option>
-<option>Blush Pink and Cream</option>
-<option>Muted Autumn Tones</option>
-<option>Honey Gold and Cream</option>
+<div class="chips">
 
-<option>Dusty Rose and Beige</option>
-<option>Muted Rainbow Pastels</option>
-<option>Lavender and Cream</option>
-<option>Soft Coastal Blues</option>
-<option>Warm Terracotta</option>
+<div class="chip active">Warm Neutrals</div>
+<div class="chip">Pastel Pink</div>
+<div class="chip">Soft Sage</div>
+<div class="chip">Muted Earth Tones</div>
+<div class="chip">Dusty Blue</div>
+<div class="chip">Cream & Gold</div>
+<div class="chip">Soft Lavender</div>
 
-</select>
-</div>
-
-<!-- LAYOUT -->
-<div class="section">
-<div class="label">Layout Style</div>
-
-<select id="layout">
-
-<option>clipart sheet layout</option>
-<option>isolated floating elements</option>
-<option>sticker sheet composition</option>
-<option>airy balanced composition</option>
-<option>commercial PNG collection layout</option>
-<option>symmetrical clipart sheet</option>
-<option>premium Etsy clipart arrangement</option>
-
-<option>scrapbook collage layout</option>
-<option>nursery decor arrangement</option>
-<option>storybook spread composition</option>
-<option>floating object composition</option>
-
-</select>
-</div>
-
-<!-- DETAILS -->
-<div class="section">
-<div class="label">Extra Details</div>
-
-<select id="details">
-
-<option>soft whimsical aesthetic</option>
-<option>minimal soft shadows</option>
-<option>delicate ink outlines</option>
-<option>storybook charm</option>
-<option>Etsy bestseller aesthetic</option>
-<option>professional printable quality</option>
-<option>soft airy composition</option>
-<option>hand drawn details</option>
-<option>cohesive matching illustration set</option>
-
-</select>
-</div>
-
-<!-- BACKGROUND -->
-<div class="section">
-<div class="label">Background</div>
-
-<select id="background">
-
-<option>pure white background</option>
-<option>transparent PNG background</option>
-<option>soft watercolor wash background</option>
-<option>vintage paper texture background</option>
-
-</select>
-</div>
-
-<!-- FINISH -->
-<div class="section">
-<div class="label">Commercial Finish</div>
-
-<select id="finish">
-
-<option>high resolution printable PNG</option>
-<option>transparent clipart bundle</option>
-<option>professional Etsy product quality</option>
-<option>commercial use clipart set</option>
-<option>premium watercolor collection</option>
-<option>matching printable clipart bundle</option>
-
-</select>
 </div>
 
 </div>
 
-<!-- CUSTOM -->
-<div class="section">
-<div class="label">Custom Idea</div>
+<div class="button-group">
 
-<input id="custom" placeholder="Add your own custom clipart idea...">
-</div>
-
-<button class="generate" onclick="generatePrompt()">
+<button class="generate-btn" onclick="generatePrompt()">
 ✨ Generate Premium Prompt
 </button>
 
-<button class="copy" onclick="copyPrompt()">
-📋 Copy Prompt
+<button class="copy-btn" onclick="copyPrompt()">
+📋 Copy
 </button>
-
-<button class="download" onclick="downloadPrompt()">
-⬇ Download Prompt
-</button>
-
-<div class="result" id="result">
-Your premium watercolor clipart prompt will appear here...
-</div>
 
 </div>
 
-<!-- RIGHT -->
+<textarea id="output" placeholder="Your premium clipart prompt will appear here..."></textarea>
+
+</div>
+
+<div class="panel preview-panel">
+
 <div class="preview">
 
-<div class="preview-frame">
-
-<img
-id="previewImg"
-src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop">
+<img id="previewImage"
+src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1200&auto=format&fit=crop">
 
 </div>
 
-<div class="preview-title">
-🎨 Premium Clipart Collection
-</div>
-
-<div class="badges">
-<div class="badge">✨ Etsy Best Seller</div>
-<div class="badge">🖼 PNG Ready</div>
-<div class="badge">🎨 Watercolor</div>
-<div class="badge">🧸 Nursery Style</div>
-<div class="badge">📦 Clipart Bundle</div>
-</div>
-
-<div class="sales">
-
-<div class="sales-title">
-🔥 Trending Clipart Niches
-</div>
-
-<div class="example">Honey Bears & Bees</div>
-<div class="example">Cowgirl Western Nursery</div>
-<div class="example">Woodland Baby Animals</div>
-<div class="example">Spring Bunny Florals</div>
-<div class="example">Vintage Farm Animals</div>
-
-</div>
-
-<div class="footer">
-Built for creators making viral printable products 💛
 </div>
 
 </div>
@@ -550,83 +319,254 @@ Built for creators making viral printable products 💛
 
 <script>
 
-function val(id){
-return document.getElementById(id).value;
+const collections = {
+
+"Honey Bears": {
+elements: [
+"watercolor honey bear",
+"honey jar",
+"dripping honey dipper",
+"bees",
+"wildflowers",
+"pussy willow branches",
+"honeycomb",
+"sleeping bear",
+"bear holding honey",
+"floral wreath",
+"yellow flowers"
+],
+palette: "warm honey beige and soft yellow",
+vibe: "storybook nursery"
+},
+
+"Baby Safari": {
+elements: [
+"baby elephant",
+"baby giraffe",
+"baby lion",
+"baby zebra",
+"palm leaves",
+"safari jeep",
+"neutral balloons",
+"acacia tree",
+"watercolor clouds",
+"neutral stars",
+"safari florals",
+"baby monkey"
+],
+palette: "neutral beige and earthy tan",
+vibe: "luxury safari nursery"
+},
+
+"Cowboy": {
+elements: [
+"cowboy boots",
+"western hat",
+"horseshoe",
+"highland cow",
+"lasso rope",
+"cow print stars",
+"cactus",
+"desert florals",
+"wood wagon wheel",
+"cowboy horse",
+"bandana bow",
+"western sun"
+],
+palette: "warm western neutrals",
+vibe: "western watercolor"
+},
+
+"Ice Cream": {
+elements: [
+"ice cream cone",
+"popsicle",
+"sprinkles",
+"waffle cone",
+"ice cream truck",
+"strawberry milkshake",
+"cherries",
+"pastel sweets",
+"whipped cream",
+"candy stars",
+"cotton candy clouds",
+"bow accents"
+],
+palette: "pastel pink blue and cream",
+vibe: "sweet pastel watercolor"
+},
+
+"Roses": {
+elements: [
+"pink roses",
+"rose bouquet",
+"rose petals",
+"vintage ribbon",
+"pearl accents",
+"lace bow",
+"garden florals",
+"gold frame",
+"butterflies",
+"floral wreath",
+"coquette bow",
+"tea cup"
+],
+palette: "soft pink and cream",
+vibe: "romantic coquette watercolor"
+},
+
+"Farm Animals": {
+elements: [
+"baby cow",
+"baby pig",
+"baby duck",
+"baby chicken",
+"hay bale",
+"barn",
+"sunflowers",
+"wood fence",
+"tractor",
+"farm florals",
+"cow print bow",
+"country boots"
+],
+palette: "soft farmhouse neutrals",
+vibe: "storybook farm watercolor"
+},
+
+"Fairy Garden": {
+elements: [
+"fairy wings",
+"mushrooms",
+"glitter stars",
+"magic wand",
+"butterflies",
+"wildflowers",
+"moon accents",
+"tiny fairy house",
+"sparkles",
+"ivy vines",
+"forest bunny",
+"fairy dust"
+],
+palette: "soft lavender and sage",
+vibe: "enchanted watercolor fantasy"
+},
+
+"Ballet Bows": {
+elements: [
+"ballet slippers",
+"pink bows",
+"tulle ribbon",
+"pearls",
+"sparkles",
+"ballerina bunny",
+"soft florals",
+"stage curtain",
+"gold stars",
+"pink hearts",
+"satin ribbon",
+"tiara"
+],
+palette: "blush pink and ivory",
+vibe: "soft ballerina watercolor"
 }
+
+};
 
 function generatePrompt(){
 
-let theme = val("theme");
-let elements = val("elements");
-let style = val("style");
-let palette = val("palette");
-let layout = val("layout");
-let details = val("details");
-let background = val("background");
-let finish = val("finish");
-let custom = val("custom");
+const theme =
+document.getElementById("collectionTheme").value;
 
-let prompt = `
-A cohesive watercolor clipart collection sheet featuring ${theme.toLowerCase()}, ${elements},
+const collection =
+collections[theme];
 
-${style},
-${palette} color palette,
+const randomElements =
+collection.elements
+.sort(() => 0.5 - Math.random())
+.slice(0,8)
+.join(", ");
 
-hand painted watercolor textures,
-commercial clipart design,
-cute whimsical aesthetic,
-soft vintage storybook style,
+const prompt =
 
-all elements separated and evenly spaced,
-${layout},
-isolated on ${background},
+`A highly detailed watercolor clipart collection sheet featuring ${randomElements},
 
-matching cohesive illustration collection,
-transparent PNG style,
-professional printable quality,
-delicate ink outlines,
-minimal soft shadows,
-high detail watercolor clipart,
-clean edges,
-airy composition,
-Etsy bestseller aesthetic,
-4k ultra detailed,
+${collection.vibe},
+soft watercolor textures,
+hand painted storybook illustration style,
+cohesive matching collection,
+isolated on white background,
+premium printable PNG clipart,
+matching aesthetic elements,
+professional Etsy clipart quality,
+${collection.palette},
+clean soft shadows,
+adorable whimsical composition,
+high resolution,
+watercolor nursery aesthetic,
+soft pastel details,
+beautiful cohesive layout,
+premium clipart sheet arrangement.`;
 
-${details},
-${finish}.
+document.getElementById("output").value =
+prompt;
 
-${custom ? "Additional elements: " + custom + "." : ""}
-`;
+updatePreview(theme);
 
-document.getElementById("result").innerText = prompt;
+}
+
+function updatePreview(theme){
+
+const img =
+document.getElementById("previewImage");
+
+const previews = {
+
+"Honey Bears":
+"https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
+
+"Baby Safari":
+"https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200&auto=format&fit=crop",
+
+"Cowboy":
+"https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1200&auto=format&fit=crop",
+
+"Ice Cream":
+"https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?q=80&w=1200&auto=format&fit=crop",
+
+"Roses":
+"https://images.unsplash.com/photo-1496065187959-7f07b8353c55?q=80&w=1200&auto=format&fit=crop",
+
+"Farm Animals":
+"https://images.unsplash.com/photo-1500595046743-cd271d694d30?q=80&w=1200&auto=format&fit=crop",
+
+"Fairy Garden":
+"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop",
+
+"Ballet Bows":
+"https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=1200&auto=format&fit=crop"
+
+};
+
+img.src = previews[theme];
 
 }
 
 function copyPrompt(){
 
-navigator.clipboard.writeText(
-document.getElementById("result").innerText
-);
+const text =
+document.getElementById("output");
+
+text.select();
+
+document.execCommand("copy");
 
 alert("Prompt copied ✨");
 
 }
 
-function downloadPrompt(){
-
-let text=document.getElementById("result").innerText;
-
-let blob=new Blob([text],{type:"text/plain"});
-
-let a=document.createElement("a");
-
-a.href=URL.createObjectURL(blob);
-
-a.download="premium-watercolor-clipart-prompt.txt";
-
-a.click();
-
-}
+generatePrompt();
 
 </script>
 
