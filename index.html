@@ -732,6 +732,157 @@ style.value =
 }
 
 }
+function setDropdownByText(dropdown, text){
+
+for(let i = 0; i < dropdown.options.length; i++){
+
+if(dropdown.options[i].text.trim() === text.trim()){
+
+dropdown.selectedIndex = i;
+break;
+
+}
+
+}
+
+}
+
+function syncTheme(){
+
+let theme =
+document.getElementById("theme").value;
+
+let elements =
+document.getElementById("elements");
+
+let palette =
+document.getElementById("palette");
+
+let layout =
+document.getElementById("layout");
+
+let details =
+document.getElementById("details");
+
+let style =
+document.getElementById("style");
+
+
+// HONEY
+if(theme.includes("Honey")){
+
+setDropdownByText(
+elements,
+"bees, honey jars, honeycomb, wildflowers"
+);
+
+palette.value =
+"Honey Gold and Cream";
+
+layout.value =
+"premium Etsy clipart arrangement";
+
+details.value =
+"soft whimsical aesthetic";
+
+style.value =
+"Vintage Nursery Watercolor";
+
+}
+
+
+// SAFARI
+else if(theme.includes("Safari")){
+
+setDropdownByText(
+elements,
+"baby elephants, giraffes, zebras, lions"
+);
+
+palette.value =
+"Earthy Boho";
+
+layout.value =
+"premium Etsy clipart arrangement";
+
+details.value =
+"cohesive matching illustration set";
+
+style.value =
+"Vintage Nursery Watercolor";
+
+}
+
+
+// COWBOY
+else if(theme.includes("Cowboy")){
+
+setDropdownByText(
+elements,
+"cowboy hats, boots, rope, western florals"
+);
+
+palette.value =
+"Warm Neutrals";
+
+layout.value =
+"airy balanced composition";
+
+details.value =
+"storybook charm";
+
+style.value =
+"Muted Boho Watercolor";
+
+}
+
+
+// ICE CREAM
+else if(theme.includes("Ice Cream")){
+
+setDropdownByText(
+elements,
+"ice cream cones, sprinkles, cherries, sundaes"
+);
+
+palette.value =
+"Soft Pastels";
+
+layout.value =
+"sticker sheet composition";
+
+details.value =
+"soft whimsical aesthetic";
+
+style.value =
+"Whimsical Pastel Watercolor";
+
+}
+
+
+// ROSES
+else if(theme.includes("Rose")){
+
+setDropdownByText(
+elements,
+"roses, peonies, eucalyptus, lace bows"
+);
+
+palette.value =
+"Blush Pink and Cream";
+
+layout.value =
+"storybook spread composition";
+
+details.value =
+"delicate ink outlines";
+
+style.value =
+"Luxury Watercolor Illustration";
+
+}
+
+}
 </script>
 
 </body>
