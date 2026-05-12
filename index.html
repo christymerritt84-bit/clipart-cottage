@@ -1,3 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎨 Clipart Cottage</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#f6f1eb;
+padding:30px;
+color:#5d4d42;
+}
+
+.container{
+max-width:1450px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 420px;
+gap:24px;
+}
+
+.panel{
+background:white;
+padding:34px;
+border-radius:34px;
+box-shadow:0 10px 40px rgba(0,0,0,.07);
+}
+
+.preview{
+background:white;
+padding:20px;
+border-radius:34px;
+box-shadow:0 10px 40px rgba(0,0,0,.07);
+height:fit-content;
+position:sticky;
+top:20px;
+}
+
+h1{
+font-size:46px;
+text-align:center;
+margin-bottom:10px;
+color:#9d7a64;
+}
+
+.sub{
+text-align:center;
+color:#aa9789;
+margin-bottom:35px;
+font-size:15px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.section{
+margin-bottom:20px;
+}
+
+.label{
+font-size:12px;
+font-weight:700;
+letter-spacing:1px;
+text-transform:uppercase;
+margin-bottom:8px;
+color:#a0806d;
+}
+
+select,input{
+width:100%;
+padding:15px;
+border-radius:16px;
+border:2px solid #eee1d5;
+background:#fffdfa;
+font-size:14px;
+font-family:'Poppins',sans-serif;
+outline:none;
+}
+
+button{
+width:100%;
+padding:16px;
+border:none;
+border-radius:18px;
+font-size:15px;
+font-weight:700;
+cursor:pointer;
+margin-top:12px;
+transition:.2s;
+font-family:'Poppins',sans-serif;
+}
+
+button:hover{
+transform:translateY(-2px);
+}
+
+.generate{
+background:linear-gradient(90deg,#d8a980,#f1cfad);
+color:white;
+}
+
+.copy{
+background:linear-gradient(90deg,#91b59f,#aecfba);
+color:white;
+}
+
+.download{
+background:linear-gradient(90deg,#9bb8d7,#b5cde8);
+color:white;
+}
+
+.result{
+margin-top:22px;
+padding:24px;
+border-radius:24px;
+background:#fff8f1;
+border:2px dashed #ead7c8;
+min-height:260px;
+line-height:1.8;
+white-space:pre-line;
+font-size:14px;
+}
+
+.preview-frame{
+background:#fff9f4;
+padding:18px;
+border-radius:24px;
+border:2px solid #f0dfd0;
+}
+
+.preview img{
+width:100%;
+height:420px;
+object-fit:cover;
+border-radius:18px;
+}
+
+.preview-title{
+font-size:22px;
+font-weight:700;
+text-align:center;
+margin-top:18px;
+color:#8e6c59;
+}
+
+.badges{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:10px;
+margin-top:15px;
+}
+
+.badge{
+padding:8px 14px;
+border-radius:999px;
+background:#fff3e8;
+font-size:12px;
+font-weight:700;
+color:#a67b62;
+}
+
+.footer{
+text-align:center;
+margin-top:18px;
+font-size:13px;
+color:#b19d90;
+}
+
+@media(max-width:1000px){
+
+.container{
+grid-template-columns:1fr;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.preview{
+position:relative;
+top:0;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="panel">
+
+<h1>🎨 Clipart Cottage</h1>
+
+<div class="sub">
+Create cohesive watercolor clipart collections ✨
+</div>
+
+<div class="grid">
+
+<div class="section">
+<div class="label">Collection Theme</div>
+
+<select id="theme" onchange="syncTheme()">
+<option>Honey Bears</option>
+<option>Baby Safari</option>
+<option>Cowboy</option>
+<option>Ice Cream</option>
+<option>Roses</option>
+<option>Farm Animals</option>
+<option>Fairy Garden</option>
+<option>Ballet Bows</option>
+</select>
+</div>
+
+<div class="section">
+<div class="label">Clipart Elements</div>
+<select id="elements"></select>
+</div>
+
+<div class="section">
+<div class="label">Art Style</div>
+<select id="style">
+<option>Vintage Nursery Watercolor</option>
+<option>Soft Storybook Illustration</option>
+<option>Hand Painted Watercolor</option>
+<option>Muted Boho Watercolor</option>
+<option>Whimsical Pastel Watercolor</option>
+<option>Luxury Watercolor Illustration</option>
+</select>
+</div>
+
+<div class="section">
+<div class="label">Color Palette</div>
+<select id="palette">
+<option>Warm Neutrals</option>
+<option>Soft Pastels</option>
+<option>Earthy Boho</option>
+<option>Honey Gold and Cream</option>
+<option>Blush Pink and Cream</option>
+<option>Lavender and Cream</option>
+</select>
+</div>
+
+<div class="section">
+<div class="label">Layout Style</div>
+<select id="layout">
+<option>premium Etsy clipart arrangement</option>
+<option>sticker sheet composition</option>
+<option>airy balanced composition</option>
+<option>storybook spread composition</option>
+<option>floating object composition</option>
+</select>
+</div>
+
+<div class="section">
+<div class="label">Extra Details</div>
+<select id="details">
+<option>soft whimsical aesthetic</option>
+<option>cohesive matching illustration set</option>
+<option>storybook charm</option>
+<option>delicate ink outlines</option>
+<option>soft airy composition</option>
+<option>Etsy bestseller aesthetic</option>
+</select>
+</div>
+
+<div class="section">
+<div class="label">Background</div>
+<select id="background">
+<option>pure white background</option>
+<option>transparent PNG background</option>
+<option>soft watercolor wash background</option>
+</select>
+</div>
+
+<div class="section">
+<div class="label">Commercial Finish</div>
+<select id="finish">
+<option>high resolution printable PNG</option>
+<option>commercial use clipart set</option>
+<option>premium watercolor collection</option>
+</select>
+</div>
+
+</div>
+
+<div class="section">
+<div class="label">Custom Idea</div>
+<input id="custom" placeholder="Add your own custom clipart idea...">
+</div>
+
+<button class="generate" onclick="generatePrompt()">
+✨ Generate Premium Prompt
+</button>
+
+<button class="copy" onclick="copyPrompt()">
+📋 Copy Prompt
+</button>
+
+<button class="download" onclick="downloadPrompt()">
+⬇ Download Prompt
+</button>
+
+<div class="result" id="result">
+Your premium watercolor clipart prompt will appear here...
+</div>
+
+</div>
+
+<div class="preview">
+
+<div class="preview-frame">
+<img id="previewImg" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop">
+</div>
+
+<div class="preview-title">
+🎨 Premium Clipart Collection
+</div>
+
+<div class="badges">
+<div class="badge">✨ Etsy Style</div>
+<div class="badge">🎨 Watercolor</div>
+<div class="badge">🖼 PNG Ready</div>
+<div class="badge">💖 Storybook</div>
+</div>
+
+<div class="footer">
+Built for creators making printable products 💛
+</div>
+
+</div>
+
+</div>
+
 <script>
 
 const themeElements = {
@@ -16,8 +368,7 @@ const themeElements = {
 "gold moons, neutral stars, safari florals",
 "safari jeeps, rope accents, wooden crates",
 "watering holes, safari binoculars, toucans",
-"parrot feathers, jungle vines, neutral rainbows",
-"soft watercolor suns, beige sparkles, safari banners"
+"parrot feathers, jungle vines, neutral rainbows"
 ],
 
 "Cowboy":[
@@ -67,183 +418,67 @@ return document.getElementById(id).value;
 
 function syncTheme(){
 
-let theme =
-document.getElementById("theme").value;
-
-let elements =
-document.getElementById("elements");
+let theme = document.getElementById("theme").value;
+let elements = document.getElementById("elements");
 
 elements.innerHTML = "";
 
 themeElements[theme].forEach(function(item){
 
-let option =
-document.createElement("option");
-
+let option = document.createElement("option");
 option.text = item;
-
 elements.add(option);
 
 });
 
+let palette = document.getElementById("palette");
+let layout = document.getElementById("layout");
+let details = document.getElementById("details");
+let style = document.getElementById("style");
 
-// AUTO MATCHING SETTINGS
-
-let palette =
-document.getElementById("palette");
-
-let layout =
-document.getElementById("layout");
-
-let details =
-document.getElementById("details");
-
-let style =
-document.getElementById("style");
-
-
-// HONEY
-if(theme.includes("Honey")){
-
-palette.value =
-"Honey Gold and Cream";
-
-layout.value =
-"premium Etsy clipart arrangement";
-
-details.value =
-"soft whimsical aesthetic";
-
-style.value =
-"Vintage Nursery Watercolor";
-
+if(theme === "Honey Bears"){
+palette.value = "Honey Gold and Cream";
+layout.value = "premium Etsy clipart arrangement";
+details.value = "soft whimsical aesthetic";
+style.value = "Vintage Nursery Watercolor";
 }
 
-
-// SAFARI
-else if(theme.includes("Safari")){
-
-palette.value =
-"Earthy Boho";
-
-layout.value =
-"premium Etsy clipart arrangement";
-
-details.value =
-"cohesive matching illustration set";
-
-style.value =
-"Vintage Nursery Watercolor";
-
+else if(theme === "Baby Safari"){
+palette.value = "Earthy Boho";
+layout.value = "premium Etsy clipart arrangement";
+details.value = "cohesive matching illustration set";
+style.value = "Vintage Nursery Watercolor";
 }
 
-
-// COWBOY
-else if(theme.includes("Cowboy")){
-
-palette.value =
-"Warm Neutrals";
-
-layout.value =
-"airy balanced composition";
-
-details.value =
-"storybook charm";
-
-style.value =
-"Muted Boho Watercolor";
-
+else if(theme === "Cowboy"){
+palette.value = "Warm Neutrals";
+layout.value = "airy balanced composition";
+details.value = "storybook charm";
+style.value = "Muted Boho Watercolor";
 }
 
-
-// ICE CREAM
-else if(theme.includes("Ice Cream")){
-
-palette.value =
-"Soft Pastels";
-
-layout.value =
-"sticker sheet composition";
-
-details.value =
-"soft whimsical aesthetic";
-
-style.value =
-"Whimsical Pastel Watercolor";
-
+else if(theme === "Ice Cream"){
+palette.value = "Soft Pastels";
+layout.value = "sticker sheet composition";
+details.value = "soft whimsical aesthetic";
+style.value = "Whimsical Pastel Watercolor";
 }
 
-
-// ROSES
-else if(theme.includes("Rose")){
-
-palette.value =
-"Blush Pink and Cream";
-
-layout.value =
-"storybook spread composition";
-
-details.value =
-"delicate ink outlines";
-
-style.value =
-"Luxury Watercolor Illustration";
-
+else if(theme === "Roses"){
+palette.value = "Blush Pink and Cream";
+layout.value = "storybook spread composition";
+details.value = "delicate ink outlines";
+style.value = "Luxury Watercolor Illustration";
 }
 
-
-// FARM
-else if(theme.includes("Farm")){
-
-palette.value =
-"Warm Neutrals";
-
-layout.value =
-"airy balanced composition";
-
-details.value =
-"storybook charm";
-
-style.value =
-"Soft Storybook Illustration";
-
+else if(theme === "Fairy Garden"){
+palette.value = "Lavender and Cream";
+layout.value = "floating object composition";
+details.value = "soft airy composition";
+style.value = "Whimsical Pastel Watercolor";
 }
 
-
-// FAIRY
-else if(theme.includes("Fairy")){
-
-palette.value =
-"Lavender and Cream";
-
-layout.value =
-"floating object composition";
-
-details.value =
-"soft airy composition";
-
-style.value =
-"Whimsical Pastel Watercolor";
-
-}
-
-
-// BALLET
-else if(theme.includes("Ballet")){
-
-palette.value =
-"Blush Pink and Cream";
-
-layout.value =
-"storybook spread composition";
-
-details.value =
-"Etsy bestseller aesthetic";
-
-style.value =
-"Luxury Watercolor Illustration";
-
-}
+updatePreview(theme);
 
 }
 
@@ -293,43 +528,30 @@ ${custom ? "Additional elements: " + custom + "." : ""}
 
 document.getElementById("result").innerText = prompt;
 
-updatePreview(theme);
-
 }
 
 function updatePreview(theme){
 
-let img =
-document.getElementById("previewImg");
+let img = document.getElementById("previewImg");
 
 if(theme.includes("Honey")){
-img.src =
-"https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop";
+img.src = "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop";
 }
 
 else if(theme.includes("Cowboy")){
-img.src =
-"https://images.unsplash.com/photo-1516467508483-a7212febe31a?q=80&w=1200&auto=format&fit=crop";
+img.src = "https://images.unsplash.com/photo-1516467508483-a7212febe31a?q=80&w=1200&auto=format&fit=crop";
 }
 
 else if(theme.includes("Rose")){
-img.src =
-"https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=1200&auto=format&fit=crop";
+img.src = "https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=1200&auto=format&fit=crop";
 }
 
 else if(theme.includes("Ice Cream")){
-img.src =
-"https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=1200&auto=format&fit=crop";
+img.src = "https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=1200&auto=format&fit=crop";
 }
 
 else if(theme.includes("Safari")){
-img.src =
-"https://images.unsplash.com/photo-1546182990-dffeafbe841d?q=80&w=1200&auto=format&fit=crop";
-}
-
-else{
-img.src =
-"https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop";
+img.src = "https://images.unsplash.com/photo-1546182990-dffeafbe841d?q=80&w=1200&auto=format&fit=crop";
 }
 
 }
@@ -346,27 +568,24 @@ alert("Prompt copied ✨");
 
 function downloadPrompt(){
 
-let text =
-document.getElementById("result").innerText;
+let text = document.getElementById("result").innerText;
 
-let blob =
-new Blob([text],{type:"text/plain"});
+let blob = new Blob([text],{type:"text/plain"});
 
-let a =
-document.createElement("a");
+let a = document.createElement("a");
 
-a.href =
-URL.createObjectURL(blob);
+a.href = URL.createObjectURL(blob);
 
-a.download =
-"premium-watercolor-clipart-prompt.txt";
+a.download = "clipart-prompt.txt";
 
 a.click();
 
 }
 
-
-// INITIAL LOAD
 syncTheme();
+generatePrompt();
 
 </script>
+
+</body>
+</html>
