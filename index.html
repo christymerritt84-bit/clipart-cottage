@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎨 Clipart Cottage</title>
+<title>🎨 Clipart Cottage AI</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -17,7 +17,7 @@ box-sizing:border-box;
 
 body{
 font-family:'Poppins',sans-serif;
-background:#f6f1eb;
+background:#f7f2ed;
 padding:30px;
 color:#5d4d42;
 }
@@ -47,18 +47,54 @@ position:sticky;
 top:20px;
 }
 
-h1{
-font-size:46px;
-text-align:center;
-margin-bottom:10px;
-color:#9d7a64;
+.hero{
+height:240px;
+border-radius:28px;
+background:url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1400&auto=format&fit=crop') center/cover;
+position:relative;
+overflow:hidden;
+margin-bottom:30px;
 }
 
-.sub{
+.hero-overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.35);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
-color:#aa9789;
-margin-bottom:35px;
-font-size:15px;
+padding:30px;
+color:white;
+}
+
+.hero h1{
+font-size:44px;
+line-height:1.1;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:16px;
+opacity:.95;
+max-width:700px;
+}
+
+.hero-badges{
+display:flex;
+gap:10px;
+margin-top:18px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.hero-badges span{
+background:rgba(255,255,255,.15);
+padding:8px 14px;
+border-radius:999px;
+font-size:13px;
+backdrop-filter:blur(4px);
 }
 
 .grid{
@@ -68,7 +104,7 @@ gap:18px;
 }
 
 .section{
-margin-bottom:20px;
+margin-bottom:18px;
 }
 
 .label{
@@ -80,7 +116,7 @@ margin-bottom:8px;
 color:#a0806d;
 }
 
-select,input{
+select,input,textarea{
 width:100%;
 padding:15px;
 border-radius:16px;
@@ -89,6 +125,11 @@ background:#fffdfa;
 font-size:14px;
 font-family:'Poppins',sans-serif;
 outline:none;
+}
+
+textarea{
+min-height:110px;
+resize:vertical;
 }
 
 button{
@@ -129,7 +170,7 @@ padding:24px;
 border-radius:24px;
 background:#fff8f1;
 border:2px dashed #ead7c8;
-min-height:260px;
+min-height:280px;
 line-height:1.8;
 white-space:pre-line;
 font-size:14px;
@@ -196,6 +237,10 @@ position:relative;
 top:0;
 }
 
+.hero h1{
+font-size:32px;
+}
+
 }
 
 </style>
@@ -203,15 +248,30 @@ top:0;
 
 <body>
 
+<div class="hero">
+
+<div class="hero-overlay">
+
+<h1>Create Viral Watercolor Clipart Prompts</h1>
+
+<p>
+Generate premium Etsy-style clipart collections in seconds ✨
+</p>
+
+<div class="hero-badges">
+<span>✨ Commercial Use</span>
+<span>🎨 Watercolor Ready</span>
+<span>🖼 PNG Style</span>
+<span>💖 Etsy Focused</span>
+</div>
+
+</div>
+
+</div>
+
 <div class="container">
 
 <div class="panel">
-
-<h1>🎨 Clipart Cottage</h1>
-
-<div class="sub">
-Create cohesive watercolor clipart collections ✨
-</div>
 
 <div class="grid">
 
@@ -237,6 +297,7 @@ Create cohesive watercolor clipart collections ✨
 
 <div class="section">
 <div class="label">Art Style</div>
+
 <select id="style">
 <option>Vintage Nursery Watercolor</option>
 <option>Soft Storybook Illustration</option>
@@ -249,6 +310,7 @@ Create cohesive watercolor clipart collections ✨
 
 <div class="section">
 <div class="label">Color Palette</div>
+
 <select id="palette">
 <option>Warm Neutrals</option>
 <option>Soft Pastels</option>
@@ -261,6 +323,7 @@ Create cohesive watercolor clipart collections ✨
 
 <div class="section">
 <div class="label">Layout Style</div>
+
 <select id="layout">
 <option>premium Etsy clipart arrangement</option>
 <option>sticker sheet composition</option>
@@ -272,6 +335,7 @@ Create cohesive watercolor clipart collections ✨
 
 <div class="section">
 <div class="label">Extra Details</div>
+
 <select id="details">
 <option>soft whimsical aesthetic</option>
 <option>cohesive matching illustration set</option>
@@ -282,8 +346,37 @@ Create cohesive watercolor clipart collections ✨
 </select>
 </div>
 
+</div>
+
+<!-- WRITE YOUR OWN -->
+
+<div class="section">
+<div class="label">Write Your Own Theme / Occasion</div>
+
+<input
+id="customTheme"
+placeholder="ex: Berry First Birthday, Pink Cowgirl Party">
+</div>
+
+<div class="section">
+<div class="label">Write Your Own Elements</div>
+
+<input
+id="customElements"
+placeholder="ex: bows, cupcakes, strawberries, balloons">
+</div>
+
+<div class="section">
+<div class="label">Write Your Own Style Direction</div>
+
+<input
+id="customStyle"
+placeholder="ex: luxury coquette watercolor">
+</div>
+
 <div class="section">
 <div class="label">Background</div>
+
 <select id="background">
 <option>pure white background</option>
 <option>transparent PNG background</option>
@@ -293,18 +386,12 @@ Create cohesive watercolor clipart collections ✨
 
 <div class="section">
 <div class="label">Commercial Finish</div>
+
 <select id="finish">
 <option>high resolution printable PNG</option>
 <option>commercial use clipart set</option>
 <option>premium watercolor collection</option>
 </select>
-</div>
-
-</div>
-
-<div class="section">
-<div class="label">Custom Idea</div>
-<input id="custom" placeholder="Add your own custom clipart idea...">
 </div>
 
 <button class="generate" onclick="generatePrompt()">
@@ -320,7 +407,7 @@ Create cohesive watercolor clipart collections ✨
 </button>
 
 <div class="result" id="result">
-Your premium watercolor clipart prompt will appear here...
+Your premium watercolor prompt will appear here...
 </div>
 
 </div>
@@ -328,18 +415,19 @@ Your premium watercolor clipart prompt will appear here...
 <div class="preview">
 
 <div class="preview-frame">
-<img id="previewImg" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop">
+<img id="previewImg"
+src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop">
 </div>
 
 <div class="preview-title">
-🎨 Premium Clipart Collection
+🎨 Premium Etsy Clipart
 </div>
 
 <div class="badges">
-<div class="badge">✨ Etsy Style</div>
-<div class="badge">🎨 Watercolor</div>
+<div class="badge">✨ Watercolor</div>
 <div class="badge">🖼 PNG Ready</div>
 <div class="badge">💖 Storybook</div>
+<div class="badge">🎂 Birthday Themes</div>
 </div>
 
 <div class="footer">
@@ -367,9 +455,6 @@ const themeElements = {
 "neutral safari balloons, acacia trees, tropical leaves",
 "baby monkeys, safari tents, wooden safari signs",
 "gold moons, neutral stars, safari florals",
-"safari jeeps, rope accents, wooden crates",
-"watering holes, safari binoculars, toucans",
-"parrot feathers, jungle vines, neutral rainbows",
 "safari birthday banners, jungle balloons, party hats"
 ],
 
@@ -377,7 +462,6 @@ const themeElements = {
 "cowboy hats, boots, rope, western florals",
 "lassos, horseshoes, denim bows",
 "bandanas, cacti, rustic stars",
-"cow print bows, boots, roses",
 "western birthday banners, cowboy boots, rodeo balloons"
 ],
 
@@ -385,36 +469,30 @@ const themeElements = {
 "ice cream cones, sprinkles, cherries, sundaes",
 "waffle cones, popsicles, candy sprinkles",
 "milkshakes, cupcakes, pastel sweets",
-"soft serve cones, whipped cream, cherries",
-"ice cream trucks, candy, macarons",
 "ice cream birthday cakes, sprinkles, party garlands"
 ],
 
 "Roses":[
 "roses, peonies, eucalyptus, lace bows",
 "vintage florals, pearl ribbons, leaves",
-"garden flowers, butterflies, vines",
 "birthday banners, balloons, cake toppers"
 ],
 
 "Farm Animals":[
 "baby cows, pigs, ducks, chickens",
 "hay bales, tractors, farm florals",
-"barns, watering cans, sunflowers",
 "party hats, confetti, birthday candles"
 ],
 
 "Fairy Garden":[
 "fairies, mushrooms, sparkles",
 "magic wands, stars, butterflies",
-"enchanted florals, moonlight vines",
 "birthday crowns, macarons, floral garlands"
 ],
 
 "Ballet Bows":[
 "ballet slippers, pink bows, pearls",
 "tulle ribbons, ballerina bunnies, sparkles",
-"pink florals, gold stars, satin bows",
 "birthday crowns, pastel bows, cake toppers"
 ]
 
@@ -426,65 +504,24 @@ return document.getElementById(id).value;
 
 function syncTheme(){
 
-let theme = document.getElementById("theme").value;
-let elements = document.getElementById("elements");
+let theme =
+document.getElementById("theme").value;
+
+let elements =
+document.getElementById("elements");
 
 elements.innerHTML = "";
 
 themeElements[theme].forEach(function(item){
 
-let option = document.createElement("option");
+let option =
+document.createElement("option");
+
 option.text = item;
+
 elements.add(option);
 
 });
-
-let palette = document.getElementById("palette");
-let layout = document.getElementById("layout");
-let details = document.getElementById("details");
-let style = document.getElementById("style");
-
-if(theme === "Honey Bears"){
-palette.value = "Honey Gold and Cream";
-layout.value = "premium Etsy clipart arrangement";
-details.value = "soft whimsical aesthetic";
-style.value = "Vintage Nursery Watercolor";
-}
-
-else if(theme === "Baby Safari"){
-palette.value = "Earthy Boho";
-layout.value = "premium Etsy clipart arrangement";
-details.value = "cohesive matching illustration set";
-style.value = "Vintage Nursery Watercolor";
-}
-
-else if(theme === "Cowboy"){
-palette.value = "Warm Neutrals";
-layout.value = "airy balanced composition";
-details.value = "storybook charm";
-style.value = "Muted Boho Watercolor";
-}
-
-else if(theme === "Ice Cream"){
-palette.value = "Soft Pastels";
-layout.value = "sticker sheet composition";
-details.value = "soft whimsical aesthetic";
-style.value = "Whimsical Pastel Watercolor";
-}
-
-else if(theme === "Roses"){
-palette.value = "Blush Pink and Cream";
-layout.value = "storybook spread composition";
-details.value = "delicate ink outlines";
-style.value = "Luxury Watercolor Illustration";
-}
-
-else if(theme === "Fairy Garden"){
-palette.value = "Lavender and Cream";
-layout.value = "floating object composition";
-details.value = "soft airy composition";
-style.value = "Whimsical Pastel Watercolor";
-}
 
 updatePreview(theme);
 
@@ -500,10 +537,20 @@ let layout = val("layout");
 let details = val("details");
 let background = val("background");
 let finish = val("finish");
-let custom = val("custom");
+
+let customTheme = val("customTheme");
+let customElements = val("customElements");
+let customStyle = val("customStyle");
 
 let prompt = `
+
 A cohesive watercolor clipart collection sheet featuring ${theme.toLowerCase()}, ${elements},
+
+${customTheme ? "Theme/Occasion: " + customTheme + "," : ""}
+
+${customElements ? "Additional matching elements: " + customElements + "," : ""}
+
+${customStyle ? "Creative direction: " + customStyle + "," : ""}
 
 ${style},
 ${palette} color palette,
@@ -531,7 +578,6 @@ Etsy bestseller aesthetic,
 ${details},
 ${finish}.
 
-${custom ? "Additional elements: " + custom + "." : ""}
 `;
 
 document.getElementById("result").innerText = prompt;
@@ -540,26 +586,32 @@ document.getElementById("result").innerText = prompt;
 
 function updatePreview(theme){
 
-let img = document.getElementById("previewImg");
+let img =
+document.getElementById("previewImg");
 
 if(theme.includes("Honey")){
-img.src = "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop";
+img.src =
+"https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop";
 }
 
 else if(theme.includes("Cowboy")){
-img.src = "https://images.unsplash.com/photo-1516467508483-a7212febe31a?q=80&w=1200&auto=format&fit=crop";
+img.src =
+"https://images.unsplash.com/photo-1516467508483-a7212febe31a?q=80&w=1200&auto=format&fit=crop";
 }
 
 else if(theme.includes("Rose")){
-img.src = "https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=1200&auto=format&fit=crop";
+img.src =
+"https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=1200&auto=format&fit=crop";
 }
 
 else if(theme.includes("Ice Cream")){
-img.src = "https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=1200&auto=format&fit=crop";
+img.src =
+"https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=1200&auto=format&fit=crop";
 }
 
 else if(theme.includes("Safari")){
-img.src = "https://images.unsplash.com/photo-1546182990-dffeafbe841d?q=80&w=1200&auto=format&fit=crop";
+img.src =
+"https://images.unsplash.com/photo-1546182990-dffeafbe841d?q=80&w=1200&auto=format&fit=crop";
 }
 
 }
@@ -576,15 +628,20 @@ alert("Prompt copied ✨");
 
 function downloadPrompt(){
 
-let text = document.getElementById("result").innerText;
+let text =
+document.getElementById("result").innerText;
 
-let blob = new Blob([text],{type:"text/plain"});
+let blob =
+new Blob([text],{type:"text/plain"});
 
-let a = document.createElement("a");
+let a =
+document.createElement("a");
 
-a.href = URL.createObjectURL(blob);
+a.href =
+URL.createObjectURL(blob);
 
-a.download = "clipart-prompt.txt";
+a.download =
+"clipart-prompt.txt";
 
 a.click();
 
