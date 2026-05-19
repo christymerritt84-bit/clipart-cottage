@@ -82,24 +82,62 @@ border-radius:14px;
 white-space:pre-line;
 line-height:1.6;
 margin-bottom:15px;
+position:relative;
+overflow:hidden;
 }
 
+/* 🔥 PREMIUM LOCKED STYLE */
 .locked{
-opacity:0.4;
-filter:blur(3px);
+color:transparent;
+position:relative;
 }
 
-.paywall{
-text-align:center;
-margin-top:20px;
-padding:20px;
-background:#fff3e8;
+.locked::before{
+content:"";
+position:absolute;
+inset:0;
+backdrop-filter:blur(10px);
+background:rgba(255,255,255,0.6);
 border-radius:14px;
 }
 
+.locked::after{
+content:"🔒 Unlock PRO to access premium prompts";
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%, -50%);
+color:#444;
+font-weight:600;
+font-size:14px;
+text-align:center;
+padding:10px 20px;
+background:white;
+border-radius:999px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* PAYWALL BOX */
+.paywall{
+text-align:center;
+margin-top:25px;
+padding:25px;
+background:linear-gradient(135deg,#fff1e6,#ffe3d4);
+border-radius:16px;
+}
+
+.paywall h3{
+margin-bottom:10px;
+}
+
+.paywall p{
+color:#666;
+font-size:14px;
+}
+
 .upgrade{
-background:linear-gradient(90deg,#ff9a9e,#fad0c4);
-margin-top:10px;
+background:linear-gradient(90deg,#ff7a7a,#ffb86c);
+margin-top:15px;
 }
 
 </style>
@@ -132,12 +170,12 @@ Create viral, high-quality clipart prompts for Etsy & AI tools ✨
 
 <button onclick="generate()">✨ Generate Prompt</button>
 
-<!-- FREE RESULT -->
+<!-- FREE -->
 <div class="result" id="output1"></div>
 
-<!-- LOCKED RESULTS -->
-<div class="result locked" id="output2">🔒 Upgrade to PRO to unlock</div>
-<div class="result locked" id="output3">🔒 Upgrade to PRO to unlock</div>
+<!-- PRO LOCKED -->
+<div class="result locked" id="output2"></div>
+<div class="result locked" id="output3"></div>
 
 <button class="copy" onclick="copyPrompt()">📋 Copy Prompt</button>
 
@@ -168,57 +206,29 @@ let art = document.getElementById("art").value;
 let render = document.getElementById("render").value;
 let items = document.getElementById("items").value;
 
-// FREE PROMPT
+// FREE
 let prompt1 = `
-
 A highly detailed ${art} clipart collection based on "${theme}",
-
 featuring ${items},
-
 in a ${style} aesthetic,
-
 rendered in ${render} style,
-
-ultra detailed, high resolution, 4k,
-clean edges, professional quality,
-
-all elements separated and evenly spaced,
+ultra detailed, 4k, clean edges,
 transparent PNG, no background.
-
 `;
 
-// PRO PROMPTS
+// PRO (hidden visually but still generated)
 let prompt2 = `
-
 Premium enhanced ${art} clipart collection for "${theme}",
-
 featuring ${items},
-
-${style} aesthetic, ${render} rendering,
-
-Etsy bestseller style,
-high detail textures, polished shading,
-vibrant colors, strong contrast,
-
-perfectly spaced elements,
-clean cutout, transparent PNG.
-
+Etsy bestseller style, polished shading,
+vibrant colors, high contrast, premium finish.
 `;
 
 let prompt3 = `
-
 Luxury clipart set inspired by "${theme}",
-
 including ${items},
-
-${style} style, ${render} rendering,
-
-ultra refined lighting,
-soft shadows, dimensional highlights,
-
-editorial quality, premium finish,
-professional commercial clipart.
-
+editorial quality, refined lighting,
+professional commercial clipart bundle.
 `;
 
 document.getElementById("output1").innerText = prompt1;
@@ -227,7 +237,6 @@ document.getElementById("output3").innerText = prompt3;
 
 }
 
-// COPY ONLY FIRST PROMPT (FREE)
 function copyPrompt(){
 navigator.clipboard.writeText(document.getElementById("output1").innerText);
 alert("Copied 🔥");
