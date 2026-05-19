@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<h1>Clipart Prompt Generator Pro</h1>
+
+<title>Clipart Prompt Generator Pro</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -68,6 +69,11 @@ cursor:pointer;
 font-size:15px;
 }
 
+.copy{
+background:#4CAF50;
+margin-top:10px;
+}
+
 .result{
 margin-top:25px;
 background:#fafafa;
@@ -75,10 +81,24 @@ padding:20px;
 border-radius:14px;
 white-space:pre-line;
 line-height:1.6;
+margin-bottom:15px;
 }
 
-.copy{
-background:#4CAF50;
+.locked{
+opacity:0.4;
+filter:blur(3px);
+}
+
+.paywall{
+text-align:center;
+margin-top:20px;
+padding:20px;
+background:#fff3e8;
+border-radius:14px;
+}
+
+.upgrade{
+background:linear-gradient(90deg,#ff9a9e,#fad0c4);
 margin-top:10px;
 }
 
@@ -89,10 +109,10 @@ margin-top:10px;
 
 <div class="container">
 
-<h1>🔥 Clipart Generator AI</h1>
+<h1>🔥 Clipart Prompt Generator Pro</h1>
 
 <div class="sub">
-Create HIGH-CONVERTING clipart prompts (no limits ✨)
+Create viral, high-quality clipart prompts for Etsy & AI tools ✨
 </div>
 
 <div class="label">Theme / Occasion</div>
@@ -102,19 +122,39 @@ Create HIGH-CONVERTING clipart prompts (no limits ✨)
 <input id="style" placeholder="ex: coquette, feminine, soft, boho">
 
 <div class="label">Art Style (medium)</div>
-<input id="art" placeholder="ex: watercolor, digital painting, ink">
+<input id="art" placeholder="ex: watercolor, digital painting">
 
-<div class="label">Render Style (IMPORTANT)</div>
-<input id="render" placeholder="ex: kawaii glossy, realistic shading, flat, storybook">
+<div class="label">Render Style</div>
+<input id="render" placeholder="ex: kawaii glossy, realistic shading">
 
 <div class="label">Items To Include</div>
-<textarea id="items" placeholder="ex: strawberries, cupcakes, bows, balloons"></textarea>
+<textarea id="items" placeholder="ex: strawberries, cupcakes, bows"></textarea>
 
-<button onclick="generate()">✨ Generate Fire Prompt</button>
+<button onclick="generate()">✨ Generate Prompt</button>
+
+<!-- FREE RESULT -->
+<div class="result" id="output1"></div>
+
+<!-- LOCKED RESULTS -->
+<div class="result locked" id="output2">🔒 Upgrade to PRO to unlock</div>
+<div class="result locked" id="output3">🔒 Upgrade to PRO to unlock</div>
 
 <button class="copy" onclick="copyPrompt()">📋 Copy Prompt</button>
 
-<div class="result" id="output"></div>
+<!-- PAYWALL -->
+<div class="paywall">
+
+<h3>🔥 Unlock PRO Mode</h3>
+
+<p>
+Generate 3 premium prompts, better results, and Etsy-optimized outputs.
+</p>
+
+<a href="https://your-beacons-link-here.com" target="_blank">
+<button class="upgrade">Upgrade to PRO ✨</button>
+</a>
+
+</div>
 
 </div>
 
@@ -128,15 +168,8 @@ let art = document.getElementById("art").value;
 let render = document.getElementById("render").value;
 let items = document.getElementById("items").value;
 
-// 🔥 SMART STYLE BOOSTING
-let renderBoost = `
-ultra detailed, high resolution, 4k,
-clean edges, professional quality,
-Etsy bestseller aesthetic,
-commercial clipart set
-`;
-
-let prompt = `
+// FREE PROMPT
+let prompt1 = `
 
 A highly detailed ${art} clipart collection based on "${theme}",
 
@@ -146,29 +179,57 @@ in a ${style} aesthetic,
 
 rendered in ${render} style,
 
-${renderBoost},
-
-soft lighting, smooth shading,
-high detail textures,
+ultra detailed, high resolution, 4k,
+clean edges, professional quality,
 
 all elements separated and evenly spaced,
-balanced composition,
-
-transparent PNG style,
-clean cutout, no background,
-
-professional, polished, high quality output.
-
-no blur, no messy edges, no dull colors
+transparent PNG, no background.
 
 `;
 
-document.getElementById("output").innerText = prompt;
+// PRO PROMPTS
+let prompt2 = `
+
+Premium enhanced ${art} clipart collection for "${theme}",
+
+featuring ${items},
+
+${style} aesthetic, ${render} rendering,
+
+Etsy bestseller style,
+high detail textures, polished shading,
+vibrant colors, strong contrast,
+
+perfectly spaced elements,
+clean cutout, transparent PNG.
+
+`;
+
+let prompt3 = `
+
+Luxury clipart set inspired by "${theme}",
+
+including ${items},
+
+${style} style, ${render} rendering,
+
+ultra refined lighting,
+soft shadows, dimensional highlights,
+
+editorial quality, premium finish,
+professional commercial clipart.
+
+`;
+
+document.getElementById("output1").innerText = prompt1;
+document.getElementById("output2").innerText = prompt2;
+document.getElementById("output3").innerText = prompt3;
 
 }
 
+// COPY ONLY FIRST PROMPT (FREE)
 function copyPrompt(){
-navigator.clipboard.writeText(document.getElementById("output").innerText);
+navigator.clipboard.writeText(document.getElementById("output1").innerText);
 alert("Copied 🔥");
 }
 
