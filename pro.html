@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Clipart Prompt Generator PRO</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:'Poppins',sans-serif;
+background:#f7f3ef;
+padding:30px;
+}
+
+.container{
+max-width:750px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+h1{
+text-align:center;
+font-size:32px;
+margin-bottom:5px;
+}
+
+.sub{
+text-align:center;
+color:#777;
+margin-bottom:25px;
+}
+
+.label{
+font-size:13px;
+font-weight:600;
+margin-top:15px;
+margin-bottom:6px;
+}
+
+input, textarea{
+width:100%;
+padding:14px;
+border-radius:12px;
+border:1px solid #ddd;
+font-family:'Poppins';
+}
+
+textarea{
+min-height:100px;
+}
+
+button{
+margin-top:20px;
+width:100%;
+padding:15px;
+border:none;
+border-radius:14px;
+background:linear-gradient(90deg,#ff7a7a,#ffb86c);
+color:white;
+font-weight:700;
+cursor:pointer;
+font-size:15px;
+}
+
+.copy{
+background:#4CAF50;
+margin-top:10px;
+}
+
+.result{
+margin-top:25px;
+background:#fafafa;
+padding:20px;
+border-radius:14px;
+white-space:pre-line;
+line-height:1.6;
+margin-bottom:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>✨ Clipart Generator PRO</h1>
+
+<div class="sub">
+You unlocked premium prompts ✨ Create higher-quality clipart instantly
+</div>
+
+<div class="label">Theme / Occasion</div>
+<input id="theme" placeholder="ex: Berry First Birthday">
+
+<div class="label">Style (vibe)</div>
+<input id="style" placeholder="ex: coquette, feminine, soft, boho">
+
+<div class="label">Art Style (medium)</div>
+<input id="art" placeholder="ex: watercolor, digital painting">
+
+<div class="label">Render Style</div>
+<input id="render" placeholder="ex: kawaii glossy, realistic shading">
+
+<div class="label">Items To Include</div>
+<textarea id="items" placeholder="ex: strawberries, cupcakes, bows"></textarea>
+
+<button onclick="generate()">✨ Generate Premium Prompts</button>
+
+<!-- RESULTS -->
+<div class="result" id="output1"></div>
+<div class="result" id="output2"></div>
+<div class="result" id="output3"></div>
+
+<button class="copy" onclick="copyPrompt()">📋 Copy Prompt</button>
+
+</div>
+
+<script>
+
+function generate(){
+
+let theme = document.getElementById("theme").value;
+let style = document.getElementById("style").value;
+let art = document.getElementById("art").value;
+let render = document.getElementById("render").value;
+let items = document.getElementById("items").value;
+
+// PROMPT 1
+let prompt1 = `
+A highly detailed ${art} clipart collection based on "${theme}",
+featuring ${items},
+in a ${style} aesthetic,
+rendered in ${render} style,
+ultra detailed, 4k resolution,
+clean edges, crisp outlines,
+transparent PNG, no background,
+professional quality.
+`;
+
+// PROMPT 2
+let prompt2 = `
+Premium enhanced ${art} clipart collection for "${theme}",
+featuring ${items},
+${style} aesthetic, ${render} rendering,
+Etsy bestseller style,
+vibrant colors, polished shading,
+balanced composition,
+high detail textures,
+clean cutout, transparent background.
+`;
+
+// PROMPT 3
+let prompt3 = `
+Luxury clipart set inspired by "${theme}",
+including ${items},
+${style} style, ${render} rendering,
+editorial quality,
+soft lighting, dimensional highlights,
+refined shadows, premium finish,
+high-end commercial clipart bundle.
+`;
+
+document.getElementById("output1").innerText = prompt1;
+document.getElementById("output2").innerText = prompt2;
+document.getElementById("output3").innerText = prompt3;
+
+}
+
+function copyPrompt(){
+navigator.clipboard.writeText(document.getElementById("output1").innerText);
+alert("Copied 🔥");
+}
+
+</script>
+
+</body>
+</html>
