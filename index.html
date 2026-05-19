@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clipart Prompt Generator</title>
+<title>🔥 Clipart Generator PRO</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -16,7 +16,7 @@ padding:30px;
 }
 
 .container{
-max-width:700px;
+max-width:750px;
 margin:auto;
 background:white;
 padding:30px;
@@ -26,7 +26,8 @@ box-shadow:0 10px 30px rgba(0,0,0,.08);
 
 h1{
 text-align:center;
-margin-bottom:10px;
+font-size:32px;
+margin-bottom:5px;
 }
 
 .sub{
@@ -42,7 +43,7 @@ margin-top:15px;
 margin-bottom:6px;
 }
 
-input, textarea{
+input, textarea, select{
 width:100%;
 padding:14px;
 border-radius:12px;
@@ -60,10 +61,11 @@ width:100%;
 padding:15px;
 border:none;
 border-radius:14px;
-background:#4CAF50;
+background:linear-gradient(90deg,#ff7a7a,#ffb86c);
 color:white;
-font-weight:600;
+font-weight:700;
 cursor:pointer;
+font-size:15px;
 }
 
 .result{
@@ -75,6 +77,11 @@ white-space:pre-line;
 line-height:1.6;
 }
 
+.copy{
+background:#4CAF50;
+margin-top:10px;
+}
+
 </style>
 </head>
 
@@ -82,25 +89,31 @@ line-height:1.6;
 
 <div class="container">
 
-<h1>Clipart Prompt Generator</h1>
+<h1>🔥 Clipart Generator PRO</h1>
 
 <div class="sub">
-Generate professional watercolor clipart prompts ✨
+Create HIGH-CONVERTING kawaii & watercolor clipart prompts
 </div>
 
 <div class="label">Theme / Occasion</div>
 <input id="theme" placeholder="ex: Berry First Birthday">
 
 <div class="label">Style</div>
-<input id="style" placeholder="ex: coquette, boho, feminine">
+<input id="style" placeholder="ex: coquette, feminine, boho, cute">
 
 <div class="label">Art Style</div>
-<input id="art" placeholder="ex: watercolor, vintage illustration">
+<select id="mode">
+<option value="kawaii">🔥 Kawaii Glossy (BEST SELLER)</option>
+<option value="watercolor">🎨 Soft Watercolor</option>
+<option value="luxury">✨ Luxury Illustration</option>
+</select>
 
 <div class="label">Items To Include</div>
-<textarea id="items" placeholder="ex: bows, cupcakes, strawberries, balloons"></textarea>
+<textarea id="items" placeholder="ex: strawberries, cupcakes, bows, balloons"></textarea>
 
-<button onclick="generate()">Generate Prompt</button>
+<button onclick="generate()">✨ Generate Fire Prompt</button>
+
+<button class="copy" onclick="copyPrompt()">📋 Copy Prompt</button>
 
 <div class="result" id="output"></div>
 
@@ -112,33 +125,125 @@ function generate(){
 
 let theme = document.getElementById("theme").value;
 let style = document.getElementById("style").value;
-let art = document.getElementById("art").value;
 let items = document.getElementById("items").value;
+let mode = document.getElementById("mode").value;
 
-let prompt = `
+let prompt = "";
 
-A cohesive ${art} clipart collection designed around "${theme}",
+// 🔥 KAWAII MODE (YOUR FIRE STYLE)
+if(mode === "kawaii"){
+
+prompt = `
+A highly detailed kawaii clipart collection based on "${theme}",
 
 featuring ${items},
 
 in a ${style} aesthetic,
 
-hand painted, soft watercolor textures,
-high resolution PNG,
-transparent background,
+super cute character style,
+big expressive eyes, smiling faces,
+adorable kawaii illustration style,
+
+ultra detailed, high resolution, 4k,
+
+glossy highlights, soft reflections,
+smooth gradient shading,
+soft airbrushed depth,
+
+thick clean outlines,
+sticker-style illustration,
+bold edges, crisp lines,
+
+vibrant colors, high contrast,
+polished rendering, semi-3D look,
+
+soft glow lighting, subtle rim light,
+
+all elements evenly spaced,
+grid layout sticker sheet composition,
+
+transparent PNG style,
+clean cutout, no background,
+
+professional clipart bundle,
+Etsy bestseller aesthetic,
+premium quality, highly rendered.
+
+no blur, no messy edges, no dull colors
+`;
+}
+
+// 🎨 WATERCOLOR MODE
+if(mode === "watercolor"){
+
+prompt = `
+A premium watercolor clipart collection based on "${theme}",
+
+featuring ${items},
+
+in a ${style} aesthetic,
+
+hand painted watercolor textures,
+soft shading, delicate highlights,
+storybook illustration style,
+
+high resolution, 4k quality,
+
+clean cutout design,
+transparent PNG style,
+no background clutter,
 
 all elements separated and evenly spaced,
-clean composition, minimal shadows,
-professional commercial use clipart set,
+airy composition,
 
-storybook quality, soft color blending,
-Etsy bestseller style,
-4k ultra detailed.
+cohesive matching collection,
+soft color palette,
+
+Etsy bestseller aesthetic,
+professional commercial use clipart.
 
 `;
+}
+
+// ✨ LUXURY MODE
+if(mode === "luxury"){
+
+prompt = `
+A luxury high-end clipart collection based on "${theme}",
+
+featuring ${items},
+
+in a ${style} aesthetic,
+
+ultra detailed rendering,
+elegant illustration style,
+
+soft lighting, subtle shadows,
+refined color palette,
+
+delicate textures, premium finish,
+
+balanced composition,
+isolated elements,
+
+transparent PNG style,
+
+high resolution, 4k,
+
+luxury branding aesthetic,
+editorial quality illustration,
+premium commercial clipart set.
+
+`;
+}
 
 document.getElementById("output").innerText = prompt;
 
+}
+
+function copyPrompt(){
+navigator.clipboard.writeText(document.getElementById("output").innerText);
+alert("Copied 🔥");
 }
 
 </script>
