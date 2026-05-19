@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🔥 Clipart Generator PRO</title>
+<title>🔥 Clipart Generator AI</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -43,7 +43,7 @@ margin-top:15px;
 margin-bottom:6px;
 }
 
-input, textarea, select{
+input, textarea{
 width:100%;
 padding:14px;
 border-radius:12px;
@@ -89,24 +89,23 @@ margin-top:10px;
 
 <div class="container">
 
-<h1>🔥 Clipart Generator PRO</h1>
+<h1>🔥 Clipart Generator AI</h1>
 
 <div class="sub">
-Create HIGH-CONVERTING kawaii & watercolor clipart prompts
+Create HIGH-CONVERTING clipart prompts (no limits ✨)
 </div>
 
 <div class="label">Theme / Occasion</div>
 <input id="theme" placeholder="ex: Berry First Birthday">
 
-<div class="label">Style</div>
-<input id="style" placeholder="ex: coquette, feminine, boho, cute">
+<div class="label">Style (vibe)</div>
+<input id="style" placeholder="ex: coquette, feminine, soft, boho">
 
-<div class="label">Art Style</div>
-<select id="mode">
-<option value="kawaii">🔥 Kawaii Glossy (BEST SELLER)</option>
-<option value="watercolor">🎨 Soft Watercolor</option>
-<option value="luxury">✨ Luxury Illustration</option>
-</select>
+<div class="label">Art Style (medium)</div>
+<input id="art" placeholder="ex: watercolor, digital painting, ink">
+
+<div class="label">Render Style (IMPORTANT)</div>
+<input id="render" placeholder="ex: kawaii glossy, realistic shading, flat, storybook">
 
 <div class="label">Items To Include</div>
 <textarea id="items" placeholder="ex: strawberries, cupcakes, bows, balloons"></textarea>
@@ -125,117 +124,44 @@ function generate(){
 
 let theme = document.getElementById("theme").value;
 let style = document.getElementById("style").value;
+let art = document.getElementById("art").value;
+let render = document.getElementById("render").value;
 let items = document.getElementById("items").value;
-let mode = document.getElementById("mode").value;
 
-let prompt = "";
+// 🔥 SMART STYLE BOOSTING
+let renderBoost = `
+ultra detailed, high resolution, 4k,
+clean edges, professional quality,
+Etsy bestseller aesthetic,
+commercial clipart set
+`;
 
-// 🔥 KAWAII MODE (YOUR FIRE STYLE)
-if(mode === "kawaii"){
+let prompt = `
 
-prompt = `
-A highly detailed kawaii clipart collection based on "${theme}",
+A highly detailed ${art} clipart collection based on "${theme}",
 
 featuring ${items},
 
 in a ${style} aesthetic,
 
-super cute character style,
-big expressive eyes, smiling faces,
-adorable kawaii illustration style,
+rendered in ${render} style,
 
-ultra detailed, high resolution, 4k,
+${renderBoost},
 
-glossy highlights, soft reflections,
-smooth gradient shading,
-soft airbrushed depth,
+soft lighting, smooth shading,
+high detail textures,
 
-thick clean outlines,
-sticker-style illustration,
-bold edges, crisp lines,
-
-vibrant colors, high contrast,
-polished rendering, semi-3D look,
-
-soft glow lighting, subtle rim light,
-
-all elements evenly spaced,
-grid layout sticker sheet composition,
+all elements separated and evenly spaced,
+balanced composition,
 
 transparent PNG style,
 clean cutout, no background,
 
-professional clipart bundle,
-Etsy bestseller aesthetic,
-premium quality, highly rendered.
+professional, polished, high quality output.
 
 no blur, no messy edges, no dull colors
-`;
-}
-
-// 🎨 WATERCOLOR MODE
-if(mode === "watercolor"){
-
-prompt = `
-A premium watercolor clipart collection based on "${theme}",
-
-featuring ${items},
-
-in a ${style} aesthetic,
-
-hand painted watercolor textures,
-soft shading, delicate highlights,
-storybook illustration style,
-
-high resolution, 4k quality,
-
-clean cutout design,
-transparent PNG style,
-no background clutter,
-
-all elements separated and evenly spaced,
-airy composition,
-
-cohesive matching collection,
-soft color palette,
-
-Etsy bestseller aesthetic,
-professional commercial use clipart.
 
 `;
-}
-
-// ✨ LUXURY MODE
-if(mode === "luxury"){
-
-prompt = `
-A luxury high-end clipart collection based on "${theme}",
-
-featuring ${items},
-
-in a ${style} aesthetic,
-
-ultra detailed rendering,
-elegant illustration style,
-
-soft lighting, subtle shadows,
-refined color palette,
-
-delicate textures, premium finish,
-
-balanced composition,
-isolated elements,
-
-transparent PNG style,
-
-high resolution, 4k,
-
-luxury branding aesthetic,
-editorial quality illustration,
-premium commercial clipart set.
-
-`;
-}
 
 document.getElementById("output").innerText = prompt;
 
