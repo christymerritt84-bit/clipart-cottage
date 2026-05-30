@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Clipart Prompt Generator PRO</title>
+<title>Clipart Generator PRO</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -17,7 +17,7 @@ padding:30px;
 }
 
 .container{
-max-width:750px;
+max-width:850px;
 margin:auto;
 background:white;
 padding:30px;
@@ -27,7 +27,7 @@ box-shadow:0 10px 30px rgba(0,0,0,.08);
 
 h1{
 text-align:center;
-font-size:32px;
+font-size:38px;
 margin-bottom:5px;
 }
 
@@ -53,7 +53,7 @@ font-family:'Poppins';
 }
 
 textarea{
-min-height:100px;
+min-height:120px;
 }
 
 button{
@@ -71,17 +71,22 @@ font-size:15px;
 
 .copy{
 background:#4CAF50;
-margin-top:10px;
+}
+
+.section-title{
+margin-top:25px;
+font-size:18px;
+font-weight:700;
 }
 
 .result{
-margin-top:25px;
+margin-top:10px;
 background:#fafafa;
 padding:20px;
 border-radius:14px;
 white-space:pre-line;
 line-height:1.6;
-margin-bottom:15px;
+border:1px solid #eee;
 }
 
 </style>
@@ -94,32 +99,36 @@ margin-bottom:15px;
 <h1>✨ Clipart Generator PRO</h1>
 
 <div class="sub">
-You unlocked premium prompts ✨ Create higher-quality clipart instantly
+Create premium clipart prompts for Etsy, Canva & AI art tools
 </div>
 
 <div class="label">Theme / Occasion</div>
-<input id="theme" placeholder="ex: Berry First Birthday">
+<input id="theme" placeholder="Berry First Birthday">
 
 <div class="label">Style (vibe)</div>
-<input id="style" placeholder="ex: coquette, feminine, soft, boho">
+<input id="style" placeholder="coquette, feminine, soft, boho">
 
 <div class="label">Art Style (medium)</div>
-<input id="art" placeholder="ex: watercolor, digital painting">
+<input id="art" placeholder="watercolor, digital painting">
 
 <div class="label">Render Style</div>
-<input id="render" placeholder="ex: kawaii glossy, realistic shading">
+<input id="render" placeholder="kawaii glossy, realistic shading">
 
 <div class="label">Items To Include</div>
-<textarea id="items" placeholder="ex: strawberries, cupcakes, bows"></textarea>
+<textarea id="items" placeholder="strawberries, cupcakes, bows"></textarea>
 
-<button onclick="generate()">✨ Generate Premium Prompts</button>
+<button onclick="generate()">✨ Generate 3 Premium Prompts</button>
 
-<!-- RESULTS -->
+<div class="section-title">✨ Standard Etsy Prompt</div>
 <div class="result" id="output1"></div>
+
+<div class="section-title">💎 Premium Best-Seller Prompt</div>
 <div class="result" id="output2"></div>
+
+<div class="section-title">🔥 Viral Trending Prompt</div>
 <div class="result" id="output3"></div>
 
-<button class="copy" onclick="copyPrompt()">📋 Copy Prompt</button>
+<button class="copy" onclick="copyAll()">📋 Copy All Prompts</button>
 
 </div>
 
@@ -133,39 +142,36 @@ let art = document.getElementById("art").value;
 let render = document.getElementById("render").value;
 let items = document.getElementById("items").value;
 
-// PROMPT 1
 let prompt1 = `
 A highly detailed ${art} clipart collection based on "${theme}",
 featuring ${items},
 in a ${style} aesthetic,
 rendered in ${render} style,
-ultra detailed, 4k resolution,
-clean edges, crisp outlines,
-transparent PNG, no background,
-professional quality.
+ultra detailed, 4k, clean edges,
+transparent PNG, no background.
 `;
 
-// PROMPT 2
 let prompt2 = `
-Premium enhanced ${art} clipart collection for "${theme}",
+Premium Etsy best-selling ${art} clipart collection inspired by "${theme}",
 featuring ${items},
-${style} aesthetic, ${render} rendering,
-Etsy bestseller style,
-vibrant colors, polished shading,
-balanced composition,
-high detail textures,
-clean cutout, transparent background.
+luxury composition, professional shading,
+commercial-quality artwork,
+high-end color palette,
+extremely detailed isolated elements,
+transparent PNG, no background,
+perfect for Etsy product listings.
 `;
 
-// PROMPT 3
 let prompt3 = `
-Luxury clipart set inspired by "${theme}",
-including ${items},
-${style} style, ${render} rendering,
-editorial quality,
-soft lighting, dimensional highlights,
-refined shadows, premium finish,
-high-end commercial clipart bundle.
+Viral trending ${art} clipart collection based on "${theme}",
+featuring ${items},
+eye-catching composition,
+bright engaging colors,
+social-media worthy aesthetic,
+cute trendy design,
+ultra detailed 8k quality,
+transparent PNG, no background,
+created for maximum visual impact.
 `;
 
 document.getElementById("output1").innerText = prompt1;
@@ -174,9 +180,22 @@ document.getElementById("output3").innerText = prompt3;
 
 }
 
-function copyPrompt(){
-navigator.clipboard.writeText(document.getElementById("output1").innerText);
-alert("Copied 🔥");
+function copyAll(){
+
+let allText =
+"STANDARD PROMPT:\n\n" +
+document.getElementById("output1").innerText +
+
+"\n\n\nPREMIUM PROMPT:\n\n" +
+document.getElementById("output2").innerText +
+
+"\n\n\nVIRAL PROMPT:\n\n" +
+document.getElementById("output3").innerText;
+
+navigator.clipboard.writeText(allText);
+
+alert("All prompts copied! ✨");
+
 }
 
 </script>
