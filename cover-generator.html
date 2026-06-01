@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cover Creator Pro</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f5efe6;padding:30px;color:#3b2f25}
+.container{max-width:1000px;margin:auto;background:#fff;padding:30px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.1)}
+h1{text-align:center;color:#b08d57}
+label{font-weight:bold;display:block;margin-top:12px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;margin-top:6px}
+button{width:100%;padding:14px;margin-top:20px;border:none;border-radius:12px;background:#b08d57;color:white;font-weight:bold;cursor:pointer}
+.result{margin-top:20px;padding:15px;background:#faf7f2;border-radius:12px;border:1px solid #e5d8c5;white-space:pre-wrap}
+.section{margin-top:25px}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>✨ Cover Creator Pro ✨</h1>
+
+<label>Book Type</label>
+<select id="bookType">
+<option>Journal</option><option>Prayer Journal</option><option>Gratitude Journal</option>
+<option>Planner</option><option>Coloring Book</option><option>Magazine</option>
+<option>Workbook</option><option>Cookbook</option><option>Children's Book</option>
+</select>
+
+<label>Cover Type</label>
+<select id="coverType">
+<option>Front Cover</option><option>Back Cover</option><option>Full Wraparound Cover</option>
+</select>
+
+<label>Audience</label>
+<select id="audience">
+<option>Women</option><option>Men</option><option>Teen Girls</option>
+<option>Kids</option><option>Christian Women</option><option>Entrepreneurs</option>
+</select>
+
+<label>Theme</label>
+<input id="theme" placeholder="Butterflies, Faith, Sunflowers">
+
+<label>Style</label>
+<input id="style" placeholder="Luxury, Coquette, Watercolor">
+
+<label>Color Palette</label>
+<input id="colors" placeholder="Beige, Cream, Gold">
+
+<label>Title</label>
+<input id="title" placeholder="Spending Time With Jesus">
+
+<label>Subtitle</label>
+<input id="subtitle" placeholder="A Journey of Thankfulness">
+
+<label>Elements to Include</label>
+<textarea id="elements" placeholder="Florals, gold accents, bows"></textarea>
+
+<button onclick="generate()">Generate 5 Premium Prompts</button>
+
+<div class="section"><h3>✨ Amazon KDP Prompt</h3><div class="result" id="out1"></div></div>
+<div class="section"><h3>💎 Etsy Best Seller Prompt</h3><div class="result" id="out2"></div></div>
+<div class="section"><h3>🔥 Magazine Cover Prompt</h3><div class="result" id="out3"></div></div>
+<div class="section"><h3>📚 Back Cover Prompt</h3><div class="result" id="out4"></div></div>
+<div class="section"><h3>🎀 Full Wrap Prompt</h3><div class="result" id="out5"></div></div>
+
+<button onclick="copyAll()">Copy All Prompts</button>
+</div>
+
+<script>
+function generate(){
+let b=bookType.value,c=coverType.value,a=audience.value,t=theme.value,s=style.value,col=colors.value,ti=title.value,sub=subtitle.value,e=elements.value;
+
+out1.innerText=`Professional ${b} ${c}, theme "${t}", audience ${a}, ${s} style, ${col} palette, title "${ti}", subtitle "${sub}", include ${e}, Amazon KDP ready, clean typography, high resolution, print ready.`;
+
+out2.innerText=`Luxury Etsy best-selling ${b} cover, ${t} theme, premium ${s} aesthetic, beige and gold publishing quality, elegant title "${ti}", subtitle "${sub}", include ${e}, commercial quality, highly detailed.`;
+
+out3.innerText=`Magazine-quality cover design for ${b}, sophisticated layout, editorial typography, ${col} palette, theme ${t}, title "${ti}", premium publishing aesthetic, ultra detailed.`;
+
+out4.innerText=`Matching back cover for ${b}, coordinated with front cover theme ${t}, space for description, elegant design elements ${e}, cohesive branding.`;
+
+out5.innerText=`Full wraparound ${b} cover including front, spine, and back, luxury ${s} aesthetic, ${col} palette, title "${ti}", subtitle "${sub}", theme ${t}, publishing-ready layout.`;
+}
+
+function copyAll(){
+let txt=[out1.innerText,out2.innerText,out3.innerText,out4.innerText,out5.innerText].join("\\n\\n");
+navigator.clipboard.writeText(txt);
+alert("Copied!");
+}
+</script>
+</body>
+</html>
