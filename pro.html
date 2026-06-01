@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<h1>🚨 TEST VERSION 🚨</h1>
+<title>Luxury Watercolor PNG Asset Generator</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -17,7 +17,7 @@ padding:30px;
 }
 
 .container{
-max-width:850px;
+max-width:900px;
 margin:auto;
 background:white;
 padding:30px;
@@ -27,7 +27,7 @@ box-shadow:0 10px 30px rgba(0,0,0,.08);
 
 h1{
 text-align:center;
-font-size:38px;
+font-size:36px;
 margin-bottom:5px;
 }
 
@@ -50,10 +50,11 @@ padding:14px;
 border-radius:12px;
 border:1px solid #ddd;
 font-family:'Poppins';
+font-size:14px;
 }
 
 textarea{
-min-height:120px;
+min-height:100px;
 }
 
 button{
@@ -96,36 +97,39 @@ border:1px solid #eee;
 
 <div class="container">
 
-<h1>✨ Clipart Generator PRO</h1>
+<h1>🎨 Luxury Watercolor PNG Asset Generator</h1>
 
 <div class="sub">
-Create premium clipart prompts for Etsy, Canva & AI art tools
+Generate premium Etsy-quality watercolor PNG prompts optimized for Flow & Gemini
 </div>
 
 <div class="label">Theme / Occasion</div>
 <input id="theme" placeholder="Berry First Birthday">
 
-<div class="label">Style (vibe)</div>
-<input id="style" placeholder="coquette, feminine, soft, boho">
+<div class="label">Aesthetic / Vibe</div>
+<input id="style" placeholder="coquette, feminine, vintage, soft">
 
-<div class="label">Art Style (medium)</div>
-<input id="art" placeholder="watercolor, digital painting">
+<div class="label">Art Medium</div>
+<input id="art" placeholder="watercolor">
 
 <div class="label">Render Style</div>
-<input id="render" placeholder="kawaii glossy, realistic shading">
+<input id="render" placeholder="hand painted, storybook illustration">
 
 <div class="label">Items To Include</div>
-<textarea id="items" placeholder="strawberries, cupcakes, bows"></textarea>
+<textarea id="items" placeholder="strawberries, bows, cupcakes"></textarea>
 
-<button onclick="generate()">✨ Generate 3 Premium Prompts</button>
+<div class="label">Negative Prompt</div>
+<textarea id="negative" placeholder="text, labels, typography, scene, composition, mockup, sticker sheet"></textarea>
+
+<button onclick="generate()">✨ Generate Premium Prompts</button>
 
 <div class="section-title">✨ Standard Etsy Prompt</div>
 <div class="result" id="output1"></div>
 
-<div class="section-title">💎 Premium Best-Seller Prompt</div>
+<div class="section-title">💎 Premium Best Seller Prompt</div>
 <div class="result" id="output2"></div>
 
-<div class="section-title">🔥 Viral Trending Prompt</div>
+<div class="section-title">🔥 Luxury Viral Prompt</div>
 <div class="result" id="output3"></div>
 
 <button class="copy" onclick="copyAll()">📋 Copy All Prompts</button>
@@ -141,37 +145,67 @@ let style = document.getElementById("style").value;
 let art = document.getElementById("art").value;
 let render = document.getElementById("render").value;
 let items = document.getElementById("items").value;
+let negative = document.getElementById("negative").value;
 
 let prompt1 = `
-A highly detailed ${art} clipart collection based on "${theme}",
-featuring ${items},
-in a ${style} aesthetic,
-rendered in ${render} style,
-ultra detailed, 4k, clean edges,
-transparent PNG, no background.
+Luxury ${art} PNG assets inspired by "${theme}",
+individual isolated elements only: ${items},
+${style} aesthetic,
+${render},
+hand painted texture,
+premium Etsy clipart quality,
+each element separated with generous whitespace,
+isolated objects only,
+no overlapping elements,
+no scene,
+no arrangement,
+no composition,
+transparent PNG,
+clean cut edges,
+high detail,
+commercial quality.
+
+Negative instructions:
+${negative}
 `;
 
 let prompt2 = `
-Premium Etsy best-selling ${art} clipart collection inspired by "${theme}",
-featuring ${items},
-luxury composition, professional shading,
-commercial-quality artwork,
-high-end color palette,
-extremely detailed isolated elements,
-transparent PNG, no background,
-perfect for Etsy product listings.
+Premium Etsy best-selling ${art} PNG asset bundle inspired by "${theme}",
+create separate isolated objects only: ${items},
+luxury hand painted artwork,
+${style} aesthetic,
+${render},
+vintage storybook illustration quality,
+soft realistic shadows,
+highly detailed watercolor texture,
+each object spaced apart individually,
+commercial seller quality,
+isolated elements only,
+transparent PNG,
+clean edges,
+professional Etsy listing quality.
+
+Negative instructions:
+${negative}
 `;
 
 let prompt3 = `
-Viral trending ${art} clipart collection based on "${theme}",
-featuring ${items},
-eye-catching composition,
-bright engaging colors,
-social-media worthy aesthetic,
-cute trendy design,
-ultra detailed 8k quality,
-transparent PNG, no background,
-created for maximum visual impact.
+Luxury viral watercolor PNG collection inspired by "${theme}",
+create separate isolated assets: ${items},
+premium hand painted watercolor,
+${style} aesthetic,
+${render},
+realistic watercolor bleeding,
+extremely detailed,
+soft premium color palette,
+each item spaced apart,
+commercial quality,
+transparent PNG,
+isolated objects only,
+top Etsy seller quality.
+
+Negative instructions:
+${negative}
 `;
 
 document.getElementById("output1").innerText = prompt1;
@@ -194,7 +228,7 @@ document.getElementById("output3").innerText;
 
 navigator.clipboard.writeText(allText);
 
-alert("All prompts copied! ✨");
+alert("All prompts copied successfully! ✨");
 
 }
 
