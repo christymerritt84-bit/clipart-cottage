@@ -105,7 +105,9 @@ Generate premium Etsy-quality watercolor PNG prompts optimized for Flow & Gemini
 <input id="theme" placeholder="Berry First Birthday">
 
 <div class="label">Aesthetic / Vibe</div>
+
 <select id="style">
+<option value="">Choose a vibe...</option>
 <option>Coquette</option>
 <option>Feminine</option>
 <option>Boho</option>
@@ -127,6 +129,8 @@ Generate premium Etsy-quality watercolor PNG prompts optimized for Flow & Gemini
 <option>Minimalist</option>
 <option>Modern</option>
 </select>
+
+<input id="customStyle" placeholder="Or type your own vibe...">
 
 <div class="label">Art Medium</div>
 <select id="art">
@@ -183,9 +187,15 @@ Generate premium Etsy-quality watercolor PNG prompts optimized for Flow & Gemini
 function generate(){
 
 let theme = document.getElementById("theme").value;
-let style = document.getElementById("style").value;
-let art = document.getElementById("art").value;
-let render = document.getElementById("render").value;
+let style =
+document.getElementById("customStyle").value ||
+document.getElementById("style").value;
+let art =
+document.getElementById("customArt").value ||
+document.getElementById("art").value;
+let render =
+document.getElementById("customRender").value ||
+document.getElementById("render").value;
 let items = document.getElementById("items").value;
 let negative = document.getElementById("negative").value;
 
