@@ -9,7 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-
 body{
 font-family:'Poppins',sans-serif;
 background:#f7f3ef;
@@ -44,7 +43,7 @@ margin-top:15px;
 margin-bottom:6px;
 }
 
-input, textarea{
+input, textarea, select{
 width:100%;
 padding:14px;
 border-radius:12px;
@@ -89,7 +88,6 @@ white-space:pre-line;
 line-height:1.6;
 border:1px solid #eee;
 }
-
 </style>
 </head>
 
@@ -107,13 +105,58 @@ Generate premium Etsy-quality watercolor PNG prompts optimized for Flow & Gemini
 <input id="theme" placeholder="Berry First Birthday">
 
 <div class="label">Aesthetic / Vibe</div>
-<input id="style" placeholder="coquette, feminine, vintage, soft">
+<select id="style">
+<option>Coquette</option>
+<option>Feminine</option>
+<option>Boho</option>
+<option>Rustic</option>
+<option>Farmhouse</option>
+<option>Cottagecore</option>
+<option>Whimsical</option>
+<option>Kawaii</option>
+<option>Luxury</option>
+<option>Vintage</option>
+<option>Storybook</option>
+<option>Christian</option>
+<option>Woodland</option>
+<option>French Country</option>
+<option>Shabby Chic</option>
+<option>Romantic</option>
+<option>Preppy</option>
+<option>Y2K</option>
+<option>Minimalist</option>
+<option>Modern</option>
+</select>
 
 <div class="label">Art Medium</div>
-<input id="art" placeholder="watercolor">
+<select id="art">
+<option>Watercolor</option>
+<option>Digital Painting</option>
+<option>Storybook Illustration</option>
+<option>Hand Painted</option>
+<option>Gouache</option>
+<option>Oil Painting</option>
+<option>Colored Pencil</option>
+<option>Marker Illustration</option>
+<option>Ink Illustration</option>
+<option>Mixed Media</option>
+<option>Vector Art</option>
+<option>Pastel Illustration</option>
+</select>
 
 <div class="label">Render Style</div>
-<input id="render" placeholder="hand painted, storybook illustration">
+<select id="render">
+<option>Hand Painted</option>
+<option>Storybook Quality</option>
+<option>Kawaii Glossy</option>
+<option>Luxury Realistic</option>
+<option>Soft Realistic Shading</option>
+<option>Cute Cartoon</option>
+<option>Semi Realistic</option>
+<option>Professional Clipart Style</option>
+<option>Highly Detailed</option>
+<option>3D Cute Render</option>
+</select>
 
 <div class="label">Items To Include</div>
 <textarea id="items" placeholder="strawberries, bows, cupcakes"></textarea>
@@ -137,7 +180,6 @@ Generate premium Etsy-quality watercolor PNG prompts optimized for Flow & Gemini
 </div>
 
 <script>
-
 function generate(){
 
 let theme = document.getElementById("theme").value;
@@ -211,27 +253,20 @@ ${negative}
 document.getElementById("output1").innerText = prompt1;
 document.getElementById("output2").innerText = prompt2;
 document.getElementById("output3").innerText = prompt3;
-
 }
 
 function copyAll(){
-
 let allText =
 "STANDARD PROMPT:\n\n" +
 document.getElementById("output1").innerText +
-
 "\n\n\nPREMIUM PROMPT:\n\n" +
 document.getElementById("output2").innerText +
-
 "\n\n\nVIRAL PROMPT:\n\n" +
 document.getElementById("output3").innerText;
 
 navigator.clipboard.writeText(allText);
-
 alert("All prompts copied successfully! ✨");
-
 }
-
 </script>
 
 </body>
