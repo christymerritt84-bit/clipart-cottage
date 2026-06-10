@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Luxury Clipart Prompt Generator Pro</title>
+<title>Luxury Clipart Collection Generator Pro</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -97,11 +97,14 @@ border:1px solid #eee;
 
 <div class="container">
 
-<h1>🎨 Luxury Clipart Prompt Generator Pro</h1>
+<h1>🎨 Luxury Clipart Collection Generator Pro</h1>
 
 <div class="sub">
-Generate premium Etsy-quality clipart prompts optimized for Flow, Gemini, ChatGPT & AI image tools
+Generate premium Etsy-quality clipart collection prompts for Etsy, ChatGPT, Gemini & AI image tools
 </div>
+
+<div class="label">Main Subject</div>
+<input id="subject" placeholder="Strawberry Girl, Highland Cow, Bunny, Dachshund">
 
 <div class="label">Theme / Occasion</div>
 <input id="theme" placeholder="Berry First Birthday">
@@ -193,6 +196,7 @@ Generate premium Etsy-quality clipart prompts optimized for Flow, Gemini, ChatGP
 <script>
 function generate(){
 
+let subject = document.getElementById("subject").value;
 let theme = document.getElementById("theme").value;
 let style =
 document.getElementById("customStyle").value ||
@@ -206,79 +210,104 @@ document.getElementById("render").value;
 let items = document.getElementById("items").value;
 let negative = document.getElementById("negative").value;
 
+
 let prompt1 = `
-Create a commercial-quality ${art} clipart collection.
+Create a premium ${art} clipart collection.
 
-Theme: "${theme}"
+Main Subject:
+${subject}
 
-Create ONLY these isolated clipart elements:
-${items}
+Theme:
+${theme}
 
-Create individual isolated elements only:
+Supporting Elements:
 ${items}
 
 Style: ${style}
 Render Style: ${render}
 
-Hand painted texture.
-Premium Etsy clipart quality.
-Each element separated with generous whitespace.
-Isolated objects only.
+Display all elements together on one canvas.
+
+Arrange elements in a cohesive Etsy clipart collection layout.
+
+Include one larger focal subject and multiple supporting elements.
+
+White background.
+
+Each element should remain separate and clearly visible for extraction.
+
 No overlapping elements.
+No scenes.
+No room mockups.
+No decorative borders.
+No text or typography.
 
-NO text.
-NO words.
-NO typography.
-NO lettering.
-NO banners.
-NO signs.
-NO labels.
-NO decorative arrangements.
-NO grouped compositions.
-NO sticker sheet layouts.
-NO scenes.
-
+Commercial-quality Etsy clipart collection.
 Transparent PNG.
-Commercial quality.
 
 Negative instructions:
 ${negative}
 `;
 
 let prompt2 = `
-Premium Etsy best-selling ${art} clipart collection inspired by "${theme}",
-create separate isolated objects only: ${items},
-luxury hand painted artwork,
-${style} aesthetic,
-${render},
-vintage storybook illustration quality,
-soft realistic shadows,
-highly detailed watercolor texture,
-each object spaced apart individually,
-commercial seller quality,
-isolated elements only,
-transparent PNG,
-clean edges,
-professional Etsy listing quality.
+Premium Etsy best-selling ${art} clipart collection.
+
+Main Subject:
+${subject}
+
+Theme:
+${theme}
+
+Supporting Elements:
+${items}
+
+${style} aesthetic.
+${render} rendering.
+
+Display all clipart together on one canvas.
+
+Create a balanced, coordinated collection with one hero subject and multiple matching supporting elements.
+
+White background.
+Commercial-quality artwork.
+Highly detailed.
+Easy to extract individual elements.
+
+No scenes.
+No mockups.
+No decorative borders.
+No typography.
 
 Negative instructions:
 ${negative}
 `;
 
 let prompt3 = `
-Luxury viral ${art} clipart collection inspired by "${theme}",
-create separate isolated assets: ${items},
-premium hand painted watercolor,
-${style} aesthetic,
-${render},
-realistic watercolor bleeding,
-extremely detailed,
-soft premium color palette,
-each item spaced apart,
-commercial quality,
-transparent PNG,
-isolated objects only,
-top Etsy seller quality.
+Luxury viral ${art} clipart collection.
+
+Main Subject:
+${subject}
+
+Theme:
+${theme}
+
+Supporting Elements:
+${items}
+
+Create a cohesive storybook-style clipart collection displayed together on one canvas.
+
+One large focal subject surrounded by coordinating elements.
+
+Premium Etsy seller quality.
+White background.
+Highly detailed.
+Clean separation between elements.
+Transparent PNG.
+
+No scenes.
+No room mockups.
+No typography.
+No banners.
 
 Negative instructions:
 ${negative}
