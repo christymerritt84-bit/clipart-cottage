@@ -4,140 +4,163 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Clipart Prompt Generator Pro</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>Invitation Suite Generator Pro</title>
 
 <style>
 
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter,sans-serif;
+}
+
 body{
-font-family:'Poppins',sans-serif;
-background:#f7f3ef;
-padding:30px;
+background:#f8f5f0;
+padding:40px;
+color:#222;
 }
 
 .container{
-max-width:750px;
+max-width:1400px;
 margin:auto;
+}
+
+.hero{
+background:#111;
+color:white;
+padding:60px;
+border-radius:20px;
+margin-bottom:30px;
+text-align:center;
+}
+
+.hero h1{
+font-size:3rem;
+margin-bottom:15px;
+}
+
+.hero p{
+opacity:.8;
+}
+
+.generator{
 background:white;
 padding:30px;
 border-radius:20px;
 box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
-h1{
-text-align:center;
-font-size:32px;
-margin-bottom:5px;
-}
-
-.sub{
-text-align:center;
-color:#777;
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
 margin-bottom:25px;
 }
 
-.label{
-font-size:13px;
+.field{
+display:flex;
+flex-direction:column;
+gap:8px;
+}
+
+label{
 font-weight:600;
-margin-top:15px;
-margin-bottom:6px;
+font-size:.9rem;
 }
 
-input, textarea{
-width:100%;
+input,select,textarea{
 padding:14px;
-border-radius:12px;
 border:1px solid #ddd;
-font-family:'Poppins';
+border-radius:12px;
+font-size:1rem;
 }
 
-textarea{
-min-height:100px;
+.section-title{
+font-size:1.2rem;
+margin:25px 0 15px;
+font-weight:700;
+}
+
+.toggle-container{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.toggle{
+padding:12px 18px;
+background:#eee;
+border-radius:999px;
+cursor:pointer;
+transition:.25s;
+user-select:none;
+}
+
+.toggle.active{
+background:#111;
+color:white;
+}
+
+.button-row{
+display:flex;
+gap:15px;
+margin-top:25px;
+flex-wrap:wrap;
 }
 
 button{
-margin-top:20px;
-width:100%;
-padding:15px;
+padding:16px 25px;
 border:none;
 border-radius:14px;
-background:linear-gradient(90deg,#ff7a7a,#ffb86c);
-color:white;
-font-weight:700;
 cursor:pointer;
-font-size:15px;
+font-size:1rem;
+font-weight:700;
+}
+
+.generate{
+background:#111;
+color:white;
+}
+
+.random{
+background:#d9b26b;
+color:white;
 }
 
 .copy{
-background:#4CAF50;
-margin-top:10px;
+background:#2f855a;
+color:white;
 }
 
-.result{
-margin-top:25px;
+.output{
+margin-top:35px;
+}
+
+.output-card{
 background:#fafafa;
-padding:20px;
-border-radius:14px;
-white-space:pre-line;
-line-height:1.6;
-margin-bottom:15px;
-position:relative;
-overflow:hidden;
-}
-
-/* 🔥 PREMIUM LOCKED STYLE */
-.locked{
-color:transparent;
-position:relative;
-}
-
-.locked::before{
-content:"";
-position:absolute;
-inset:0;
-backdrop-filter:blur(10px);
-background:rgba(255,255,255,0.6);
-border-radius:14px;
-}
-
-.locked::after{
-content:"🔒 Unlock PRO to access premium prompts";
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%, -50%);
-color:#444;
-font-weight:600;
-font-size:14px;
-text-align:center;
-padding:10px 20px;
-background:white;
-border-radius:999px;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
-}
-
-/* PAYWALL BOX */
-.paywall{
-text-align:center;
-margin-top:25px;
 padding:25px;
-background:linear-gradient(135deg,#fff1e6,#ffe3d4);
 border-radius:16px;
+margin-bottom:20px;
+border:1px solid #e5e5e5;
 }
 
-.paywall h3{
-margin-bottom:10px;
+.output-card h3{
+margin-bottom:15px;
 }
 
-.paywall p{
-color:#666;
-font-size:14px;
+.output-text{
+white-space:pre-wrap;
+line-height:1.7;
 }
 
-.upgrade{
-background:linear-gradient(90deg,#ff7a7a,#ffb86c);
-margin-top:15px;
+@media(max-width:900px){
+.grid{
+grid-template-columns:1fr;
+}
+.hero h1{
+font-size:2rem;
+}
 }
 
 </style>
@@ -147,50 +170,148 @@ margin-top:15px;
 
 <div class="container">
 
-<h1>🔥 Clipart Prompt Generator Pro</h1>
-
-<div class="sub">
-Create viral, high-quality clipart prompts for Etsy & AI tools ✨
+<div class="hero">
+<h1>Invitation Suite Generator Pro</h1>
+<p>Create complete invitation suite prompts for Canva, AI Art & Etsy products.</p>
 </div>
 
-<div class="label">Theme / Occasion</div>
-<input id="theme" placeholder="ex: Berry First Birthday">
+<div class="generator">
 
-<div class="label">Style (vibe)</div>
-<input id="style" placeholder="ex: coquette, feminine, soft, boho">
+<div class="grid">
 
-<div class="label">Art Style (medium)</div>
-<input id="art" placeholder="ex: watercolor, digital painting">
+<div class="field">
+<label>Occasion</label>
+<select id="occasion">
+<option>Baby Shower</option>
+<option>Birthday</option>
+<option>Wedding</option>
+<option>Bridal Shower</option>
+<option>Graduation</option>
+<option>Retirement</option>
+<option>Custom</option>
+</select>
+</div>
 
-<div class="label">Render Style</div>
-<input id="render" placeholder="ex: kawaii glossy, realistic shading">
+<div class="field">
+<label>Theme</label>
+<select id="theme">
+<option>Boho</option>
+<option>Floral</option>
+<option>Rustic</option>
+<option>Coastal</option>
+<option>Safari</option>
+<option>Princess</option>
+<option>Fall Pumpkin</option>
+<option>Vintage</option>
+<option>Custom</option>
+</select>
+</div>
 
-<div class="label">Items To Include</div>
-<textarea id="items" placeholder="ex: strawberries, cupcakes, bows"></textarea>
+<div class="field">
+<label>Custom Theme</label>
+<input id="customTheme" placeholder="Enter custom theme">
+</div>
 
-<button onclick="generate()">✨ Generate Prompt</button>
+<div class="field">
+<label>Honoree Name</label>
+<input id="honoree" placeholder="Stephanie Smith">
+</div>
 
-<!-- FREE -->
-<div class="result" id="output1"></div>
+<div class="field">
+<label>Date</label>
+<input id="date" placeholder="September 12">
+</div>
 
-<!-- PRO LOCKED -->
-<div class="result locked" id="output2"></div>
-<div class="result locked" id="output3"></div>
+<div class="field">
+<label>Time</label>
+<input id="time" placeholder="1:00 PM">
+</div>
 
-<button class="copy" onclick="copyPrompt()">📋 Copy Prompt</button>
+<div class="field">
+<label>Location</label>
+<input id="location" placeholder="The Smith Residence">
+</div>
 
-<!-- PAYWALL -->
-<div class="paywall">
+<div class="field">
+<label>Design Style</label>
+<select id="style">
+<option>Watercolor</option>
+<option>Luxury</option>
+<option>Minimalist</option>
+<option>Vintage</option>
+<option>Elegant</option>
+<option>Whimsical</option>
+<option>Cottagecore</option>
+</select>
+</div>
 
-<h3>🔥 Unlock PRO Mode</h3>
+</div>
 
-<p>
-Generate 3 premium prompts, better results, and Etsy-optimized outputs.
-</p>
+<div class="section-title">
+Elements To Include
+</div>
 
-<a href="https://your-beacons-link-here.com" target="_blank">
-<button class="upgrade">Upgrade to PRO ✨</button>
-</a>
+<div class="toggle-container">
+
+<div class="toggle active">Invitation Card</div>
+<div class="toggle active">RSVP Card</div>
+<div class="toggle">Save The Date</div>
+<div class="toggle">Thank You Card</div>
+<div class="toggle">Envelope Liner</div>
+<div class="toggle">Registry Card</div>
+<div class="toggle">Itinerary Card</div>
+<div class="toggle">Welcome Sign</div>
+<div class="toggle">Menu Card</div>
+<div class="toggle">Favor Tag</div>
+<div class="toggle">Matching Clipart Bundle</div>
+<div class="toggle">Social Media Graphic</div>
+
+</div>
+
+<div class="button-row">
+
+<button class="generate" onclick="generateSuite()">
+Generate Invitation Suite
+</button>
+
+<button class="random" onclick="randomizeAll()">
+Randomize Everything
+</button>
+
+<button class="copy" onclick="copyAll()">
+Copy All
+</button>
+
+</div>
+
+<div class="output">
+
+<div class="output-card">
+<h3>Design Brief</h3>
+<div class="output-text" id="brief"></div>
+</div>
+
+<div class="output-card">
+<h3>AI Image Prompt</h3>
+<div class="output-text" id="imagePrompt"></div>
+</div>
+
+<div class="output-card">
+<h3>Canva Layout Prompt</h3>
+<div class="output-text" id="canvaPrompt"></div>
+</div>
+
+<div class="output-card">
+<h3>Clipart Prompt</h3>
+<div class="output-text" id="clipartPrompt"></div>
+</div>
+
+<div class="output-card">
+<h3>Marketing Description</h3>
+<div class="output-text" id="marketing"></div>
+</div>
+
+</div>
 
 </div>
 
@@ -198,49 +319,113 @@ Generate 3 premium prompts, better results, and Etsy-optimized outputs.
 
 <script>
 
-function generate(){
+const toggles=document.querySelectorAll(".toggle");
 
-let theme = document.getElementById("theme").value;
-let style = document.getElementById("style").value;
-let art = document.getElementById("art").value;
-let render = document.getElementById("render").value;
-let items = document.getElementById("items").value;
+toggles.forEach(btn=>{
+btn.addEventListener("click",()=>{
+btn.classList.toggle("active");
+});
+});
 
-// FREE
-let prompt1 = `
-A highly detailed ${art} clipart collection based on "${theme}",
-featuring ${items},
-in a ${style} aesthetic,
-rendered in ${render} style,
-ultra detailed, 4k, clean edges,
-transparent PNG, no background.
-`;
+function selectedElements(){
+return [...document.querySelectorAll(".toggle.active")]
+.map(x=>x.innerText)
+.join(", ");
+}
 
-// PRO (hidden visually but still generated)
-let prompt2 = `
-Premium enhanced ${art} clipart collection for "${theme}",
-featuring ${items},
-Etsy bestseller style, polished shading,
-vibrant colors, high contrast, premium finish.
-`;
+function generateSuite(){
 
-let prompt3 = `
-Luxury clipart set inspired by "${theme}",
-including ${items},
-editorial quality, refined lighting,
-professional commercial clipart bundle.
-`;
+let occasion=document.getElementById("occasion").value;
 
-document.getElementById("output1").innerText = prompt1;
-document.getElementById("output2").innerText = prompt2;
-document.getElementById("output3").innerText = prompt3;
+let theme=document.getElementById("theme").value;
+
+let customTheme=document.getElementById("customTheme").value;
+
+if(theme==="Custom" && customTheme!==""){
+theme=customTheme;
+}
+
+let honoree=document.getElementById("honoree").value;
+
+let date=document.getElementById("date").value;
+
+let time=document.getElementById("time").value;
+
+let location=document.getElementById("location").value;
+
+let style=document.getElementById("style").value;
+
+let elements=selectedElements();
+
+document.getElementById("brief").innerText=
+`Create a premium ${style.toLowerCase()} ${occasion.toLowerCase()} invitation suite themed around ${theme}. Include matching stationery pieces: ${elements}. Feature cohesive artwork, luxury typography, coordinated color palette and Etsy-ready design assets.`;
+
+document.getElementById("imagePrompt").innerText=
+`${style} ${occasion} invitation suite, ${theme} theme, premium stationery mockup, elegant typography, coordinated paper goods, luxury event branding, matching invitation collection, highly detailed, professional design, ultra realistic, 8k`;
+
+document.getElementById("canvaPrompt").innerText=
+`Design a complete Canva invitation suite for ${honoree}. Event date ${date}, time ${time}, location ${location}. Include ${elements}. Maintain cohesive branding throughout all pieces.`;
+
+document.getElementById("clipartPrompt").innerText=
+`Create a matching clipart collection for a ${theme} themed ${occasion}. Include decorative elements, florals, borders, icons, accent pieces, isolated PNG artwork, transparent background, commercial-use quality.`;
+
+document.getElementById("marketing").innerText=
+`Beautiful ${theme} ${occasion} invitation suite featuring coordinated event stationery. Includes ${elements}. Perfect for Etsy sellers, Canva creators and event designers seeking professionally branded invitation products.`;
 
 }
 
-function copyPrompt(){
-navigator.clipboard.writeText(document.getElementById("output1").innerText);
-alert("Copied 🔥");
+function randomizeAll(){
+
+const themes=[
+"Fall Pumpkin",
+"Wildflower",
+"Coastal",
+"Boho Rainbow",
+"Safari",
+"Vintage Rose",
+"Rustic Barn",
+"Princess Garden"
+];
+
+const styles=[
+"Watercolor",
+"Luxury",
+"Elegant",
+"Whimsical",
+"Cottagecore"
+];
+
+document.getElementById("theme").value="Custom";
+document.getElementById("customTheme").value=
+themes[Math.floor(Math.random()*themes.length)];
+
+document.getElementById("style").value=
+styles[Math.floor(Math.random()*styles.length)];
+
+generateSuite();
+
 }
+
+function copyAll(){
+
+const text=
+document.getElementById("brief").innerText +
+"\n\n" +
+document.getElementById("imagePrompt").innerText +
+"\n\n" +
+document.getElementById("canvaPrompt").innerText +
+"\n\n" +
+document.getElementById("clipartPrompt").innerText +
+"\n\n" +
+document.getElementById("marketing").innerText;
+
+navigator.clipboard.writeText(text);
+
+alert("Copied Successfully!");
+
+}
+
+generateSuite();
 
 </script>
 
