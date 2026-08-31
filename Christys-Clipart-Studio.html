@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christy's Clipart Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#25211f;--muted:#746d68;--line:#e9e2dc;--pink:#c85a7d;--pink-soft:#f8e7ed;--gold:#b99453;--shadow:0 18px 55px rgba(55,35,25,.10)}
+*{box-sizing:border-box}body{margin:0;background:#f6f3ef;color:var(--ink);font-family:"DM Sans",Arial,sans-serif}
+.page{max-width:1320px;margin:0 auto;padding:28px 22px 60px}.hero{text-align:center;padding:44px 20px 34px}
+.kicker{font-size:11px;letter-spacing:5px;font-weight:700;color:var(--gold);margin-bottom:13px}
+h1{margin:0;font-family:"Playfair Display",serif;font-size:clamp(42px,6vw,76px);line-height:1;font-weight:600}h1 em{color:var(--gold)}
+.subtitle{max-width:760px;margin:18px auto 0;color:var(--muted);line-height:1.7;font-size:15px}
+.studio{background:#fffdfa;border:1px solid var(--line);box-shadow:var(--shadow);border-radius:26px;overflow:hidden}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:17px 24px;border-bottom:1px solid var(--line);gap:15px}
+.brand{font-family:"Playfair Display",serif;font-size:22px;font-weight:700}.badge{font-size:11px;background:var(--pink-soft);color:#a53c60;padding:7px 11px;border-radius:999px;font-weight:700}
+.content{padding:28px}.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:22px}.panel{border:1px solid var(--line);border-radius:20px;padding:22px;background:#fffefa}
+.panel h2{font-family:"Playfair Display",serif;margin:0 0 5px;font-size:25px}.help{margin:0 0 20px;color:var(--muted);font-size:13px;line-height:1.55}
+.section{padding:18px 0;border-top:1px solid var(--line)}.section:first-of-type{border-top:0;padding-top:0}
+.label-row{display:flex;justify-content:space-between;gap:10px;align-items:baseline;margin-bottom:9px}.label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase}.note{font-size:11px;color:#9a928d}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{border:1px solid #d9d1ca;background:#fff;color:#4b4541;padding:9px 13px;border-radius:999px;font:600 13px "DM Sans",sans-serif;cursor:pointer;white-space:nowrap}
+.chip.active{background:var(--pink);border-color:var(--pink);color:#fff;box-shadow:0 7px 18px rgba(200,90,125,.22)}
+.writein{width:100%;margin-top:11px;border:1px solid #ded6cf;border-radius:12px;padding:11px 13px;background:#fff;font:14px "DM Sans",sans-serif;color:var(--ink)}
+textarea.writein{min-height:78px;resize:vertical}.select-wrap{display:flex;gap:9px;align-items:center}.select-wrap input{width:76px;border:1px solid #ded6cf;border-radius:10px;padding:10px}
+.generate{width:100%;margin-top:22px;border:0;border-radius:14px;padding:15px 18px;background:linear-gradient(135deg,#b54c70,#d36f91);color:#fff;font-weight:700;font-size:15px;cursor:pointer}
+.preview-card{background:linear-gradient(180deg,#fdfaf7,#f6efe9);border:1px solid var(--line);border-radius:20px;padding:24px}.preview-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.preview-title{font-family:"Playfair Display",serif;font-size:26px}
+.output{white-space:pre-wrap;background:#fff;border:1px solid var(--line);border-radius:15px;padding:18px;line-height:1.65;font-size:14px;min-height:490px;color:#3d3834}
+.actions{display:flex;gap:10px;margin-top:12px}.action{flex:1;border:1px solid #d8cec6;background:#fff;border-radius:11px;padding:11px;font-weight:700;cursor:pointer;color:#5a514c}.action.primary{background:#2e2926;color:#fff;border-color:#2e2926}
+.footer-tip{margin-top:18px;padding:14px;border-radius:13px;background:#f7e8ee;color:#7d3f55;font-size:12px;line-height:1.5}
+@media(max-width:950px){.grid{grid-template-columns:1fr}.output{min-height:300px}}@media(max-width:560px){.page{padding:10px}.content{padding:14px}.topbar{padding:14px}.panel{padding:16px}}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="hero"><div class="kicker">CHRISTY'S CREATIONS</div><h1>The Clipart <em>Studio</em></h1><p class="subtitle">Build polished AI prompts for cohesive clipart collections. Choose your collection, style, colors, elements, and layout—or write in your own ideas under every section.</p></div>
+<div class="studio"><div class="topbar"><div class="brand">Clipart Prompt Builder</div><div class="badge">COLLECTION MODE ✦</div></div>
+<div class="content"><div class="grid">
+<div class="panel">
+<h2>Create your collection</h2><p class="help">Select as many chips as you want. Your custom write-ins are added to the prompt too.</p>
+
+<div class="section"><div class="label-row"><div class="label">Theme / Collection</div><div class="note">Choose one or more</div></div><div class="chips" data-group="theme"><button class="chip">Fairy</button><button class="chip">Cottagecore</button><button class="chip">Coquette</button><button class="chip">Farmhouse</button><button class="chip">Christian</button><button class="chip">Woodland</button><button class="chip">Baby</button><button class="chip">Birthday</button><button class="chip">Halloween</button><button class="chip">Christmas</button><button class="chip">Spring</button><button class="chip">Summer</button><button class="chip">Autumn</button><button class="chip">Valentine's</button></div><input class="writein" id="themeCustom" placeholder="Add your own theme or collection idea..."></div>
+
+<div class="section"><div class="label-row"><div class="label">Illustration Style</div><div class="note">Choose one or more</div></div><div class="chips" data-group="illustration"><button class="chip">Soft Watercolor</button><button class="chip">Cute Kawaii Watercolor</button><button class="chip">Storybook</button><button class="chip">Whimsical</button><button class="chip">Hand Painted</button><button class="chip">Gouache</button><button class="chip">Colored Pencil</button><button class="chip">Digital Painting</button><button class="chip">Vintage Illustration</button><button class="chip">Ink Illustration</button><button class="chip">Pastel Illustration</button></div><input class="writein" id="illustrationCustom" placeholder="Add your own illustration style..."></div>
+
+<div class="section"><div class="label-row"><div class="label">Your Colors</div><div class="note">Choose one or more</div></div><div class="chips" data-group="colors"><button class="chip">Soft Pink</button><button class="chip">Lavender</button><button class="chip">Baby Blue</button><button class="chip">Sage Green</button><button class="chip">Cream</button><button class="chip">Beige</button><button class="chip">Ivory</button><button class="chip">Peach</button><button class="chip">Butter Yellow</button><button class="chip">Dusty Rose</button><button class="chip">Gold Accents</button></div><input class="writein" id="colorsCustom" placeholder="Add your own colors..."></div>
+
+<div class="section"><div class="label-row"><div class="label">Elements To Include</div><div class="note">Optional • multi-select</div></div><div class="chips" data-group="elements"><button class="chip">Bows</button><button class="chip">Flowers</button><button class="chip">Butterflies</button><button class="chip">Stars</button><button class="chip">Hearts</button><button class="chip">Balloons</button><button class="chip">Cupcakes</button><button class="chip">Berries</button><button class="chip">Animals</button><button class="chip">Books</button><button class="chip">Coffee</button><button class="chip">Candles</button><button class="chip">Frames</button><button class="chip">Borders</button></div><textarea class="writein" id="elementsCustom" placeholder="Add specific elements for your collection..."></textarea></div>
+
+<div class="section"><div class="label-row"><div class="label">Collection Layout</div><div class="note">How the generated image should look</div></div><div class="chips" data-group="layout"><button class="chip active">Clipart Collection Sheet</button><button class="chip">One Main Character + Elements</button><button class="chip">Individual Isolated Elements</button><button class="chip">Matching Themed Set</button><button class="chip">Sticker Sheet Style</button></div><input class="writein" id="layoutCustom" placeholder="Add your own collection layout..."></div>
+
+<div class="section"><div class="label-row"><div class="label">How Many Elements?</div><div class="note">Optional</div></div><div class="select-wrap"><input type="number" id="count" min="1" max="50" value="12"><span class="note">Suggested: 8–20 elements</span></div><input class="writein" id="countCustom" placeholder="Or describe your own quantity..."></div>
+<button class="generate" onclick="generatePrompt()">✨ Build My Clipart Collection Prompt</button>
+</div>
+
+<div class="preview-card"><div class="preview-head"><div class="preview-title">Your Prompt</div><div class="badge">READY TO COPY</div></div><div class="output" id="output">Your custom clipart collection prompt will appear here.
+
+Tip: Choose several chips and add any very specific ideas in the write-in areas. This builder is designed to describe a cohesive COLLECTION of clipart elements together—not one isolated image at a time.</div><div class="actions"><button class="action primary" onclick="copyPrompt()">📋 Copy Prompt</button><button class="action" onclick="clearAll()">↺ Clear Selections</button></div><div class="footer-tip"><strong>Collection reminder:</strong> This builder intentionally asks the AI to create multiple coordinated clipart elements together on one clean canvas with generous spacing.</div></div>
+</div></div></div></div>
+
+<script>
+function selected(group){return [...document.querySelectorAll('[data-group="'+group+'"] .chip.active')].map(x=>x.textContent.trim())}
+document.querySelectorAll(".chips .chip").forEach(chip=>chip.addEventListener("click",()=>chip.classList.toggle("active")));
+function addCustom(arr,id){const v=document.getElementById(id).value.trim();if(v)arr.push(v);return arr}
+function listText(arr,fallback){return arr.length?arr.join(", "):fallback}
+function generatePrompt(){
+const theme=addCustom(selected("theme"),"themeCustom"),style=addCustom(selected("illustration"),"illustrationCustom"),colors=addCustom(selected("colors"),"colorsCustom"),elements=addCustom(selected("elements"),"elementsCustom"),layout=addCustom(selected("layout"),"layoutCustom");
+const count=document.getElementById("countCustom").value.trim()||document.getElementById("count").value||"12";
+const prompt=`Commercial-quality premium Etsy clipart collection.
+
+THEME / COLLECTION:
+${listText(theme,"custom themed collection")}
+
+ILLUSTRATION STYLE:
+${listText(style,"whimsical professional clipart illustration")}
+
+COLOR PALETTE:
+${listText(colors,"soft cohesive colors")}
+
+ELEMENTS TO INCLUDE:
+${listText(elements,"matching themed supporting elements")}
+
+COLLECTION FORMAT:
+${listText(layout,"clipart collection sheet")}
+
+QUANTITY:
+Create approximately ${count} coordinated clipart elements.
+
+IMPORTANT COMPOSITION INSTRUCTIONS:
+Create ONE cohesive clipart collection displayed together on a single clean white or very light background. Show multiple separate, clearly visible, extractable clipart elements in the same image. Each element should be individually recognizable and have generous whitespace around it. Do not combine everything into one scene unless specifically requested.
+
+Include one larger focal element when appropriate, with multiple matching supporting elements around it. Keep the collection visually coordinated through the same art style, line quality, color palette, shading, and level of detail.
+
+CLIPART REQUIREMENTS:
+Individual isolated clipart elements, cohesive matching collection, clean cutout-friendly edges, no overlapping elements, no busy background, no room scene, no mockup, no product display, no text, no words, no labels, no typography, no watermark, no logo, no banner lettering.
+
+Premium Etsy-quality digital clipart aesthetic, polished details, balanced spacing, commercial-quality artwork, consistent visual style across every element.`;
+document.getElementById("output").innerText=prompt}
+async function copyPrompt(){const text=document.getElementById("output").innerText;if(text.startsWith("Your custom"))return;try{await navigator.clipboard.writeText(text);alert("Your clipart collection prompt was copied! ✨")}catch(e){alert("Select the prompt text and copy it manually.")}}
+function clearAll(){document.querySelectorAll(".chips .chip").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".writein").forEach(x=>x.value="");document.getElementById("count").value="12";document.getElementById("output").innerText="Your custom clipart collection prompt will appear here."}
+</script>
+</body>
+</html>
