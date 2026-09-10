@@ -47,6 +47,7 @@ button.primary:hover{filter:brightness(.97);transform:translateY(-1px)}
 .section-title{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:#8c716c;margin-top:20px}
 .footer-note{margin-top:20px;font-size:12px;color:#8c7772}
 @media(max-width:950px){.sidebar{display:none}.main{padding:16px}.grid{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+.helper{font-size:11px;color:#9a8580;margin-top:5px;line-height:1.4}
 </style>
 </head>
 <body>
@@ -69,7 +70,7 @@ button.primary:hover{filter:brightness(.97);transform:translateY(-1px)}
     <section class="hero">
       <span class="badge">Premium Clipart Engine</span>
       <h2>Build sophisticated, heirloom-quality clipart</h2>
-      <p>This upgraded version is designed to stop producing generic “basic clipart.” It builds prompts around vintage botanical illustration, intricate hand-painted detail, dimensional rendering, realistic materials, layered florals, fabric texture, and coordinated stationery-quality art direction.</p>
+      <p>Choose your theme, style, colors and elements. Clipart Studio automatically handles the sophisticated details, textures, shading and professional art direction for you.</p>
     </section>
 
     <div class="grid">
@@ -109,6 +110,13 @@ button.primary:hover{filter:brightness(.97);transform:translateY(-1px)}
         <label>Color Palette</label>
         <input id="palette" value="Soft Pink, Dusty Rose, Lavender, Muted Sage Green, Warm Ivory, Cream, Soft Apple Red">
 
+        <label>Detail Level</label>
+        <select id="detail">
+          <option selected>Premium — highly detailed & sophisticated</option>
+          <option>Delicate — soft and elegant</option>
+          <option>Rich — extra ornate and heirloom-quality</option>
+        </select>
+
         <label>Visual Finish</label>
         <div class="checks">
           <label class="check"><input type="checkbox" checked value="fine botanical linework"> Fine botanical linework</label>
@@ -121,17 +129,11 @@ button.primary:hover{filter:brightness(.97);transform:translateY(-1px)}
           <label class="check"><input type="checkbox" checked value="tiny hand-painted details"> Tiny hand-painted details</label>
         </div>
 
-        <label>Material Detail</label>
-        <textarea id="materials">Realistic woven wicker, soft cotton and linen, lace edging, satin ribbon, delicate embroidery, fabric folds, natural apple skin, leaf veins, flower petals, stems and fine botanical textures.</textarea>
-
         <label>Elements to Include</label>
         <textarea id="elements">apples, apple blossoms, baby bonnet, baby onesie/romper, baby booties, coquette bow, lavender gingham bow, basket filled with apples and flowers, apple blossom branch, floral cluster, decorative heart, pacifier with ribbon</textarea>
 
         <label>Composition Direction</label>
-        <textarea id="composition">Create one cohesive collection displayed together on a clean white or very light ivory background. Every element must be separate, fully visible and extractable with generous whitespace. No overlapping objects. Include one larger focal element and coordinated supporting elements. Arrange the artwork like a premium vintage stationery clipart collection rather than a generic sticker sheet.</textarea>
-
-        <label>Advanced Art Direction</label>
-        <textarea id="advanced">Make every object look individually painted by a highly skilled botanical and children's stationery illustrator. Use intricate micro-detail, realistic material rendering, layered objects, natural imperfections, elegant proportions, subtle shadows, fine highlights, and sophisticated color variation. The finished artwork should feel expensive, polished, feminine, nostalgic and heirloom-quality.</textarea>
+        <textarea id="composition">Clean collection sheet with separate, fully visible elements, generous whitespace, no overlapping objects, and one larger focal element when appropriate.</textarea>
 
         <button class="primary" onclick="generate()">✨ Generate Premium Clipart Prompt</button>
       </section>
@@ -152,7 +154,7 @@ button.primary:hover{filter:brightness(.97);transform:translateY(-1px)}
         <p class="small">The engine automatically tells the image model to avoid flat vector art, simplistic watercolor, generic stock clipart, cartoon icons, sticker aesthetics, thick outlines, plastic-looking 3D renders, and minimal-detail artwork.</p>
 
         <div class="section-title">Why this version is different</div>
-        <p class="small">The prompt now emphasizes the qualities visible in premium vintage invitation artwork: botanical micro-detail, dimensional shading, realistic materials, layered florals, fabric construction, fine linework, controlled color variation, and heirloom stationery art direction.</p>
+        <p class="small">You no longer have to know what materials, textures or advanced art terms to enter. Clipart Studio automatically adds the right details based on the theme and objects you choose.</p>
       </section>
     </div>
   </main>
@@ -171,10 +173,9 @@ function generate(){
   const format=document.getElementById('format').value;
   const style=document.getElementById('style').value;
   const palette=document.getElementById('palette').value.trim();
-  const materials=document.getElementById('materials').value.trim();
+  const detail=document.getElementById('detail').value;
   const elements=document.getElementById('elements').value.trim();
   const composition=document.getElementById('composition').value.trim();
-  const advanced=document.getElementById('advanced').value.trim();
   const finish=checkedDetails().join(', ');
 
   const prompt =
@@ -201,8 +202,8 @@ Extremely detailed. Include fine botanical linework, visible leaf veins, individ
 COLOR PALETTE:
 ${palette}
 
-MATERIAL / TEXTURE DIRECTION:
-${materials}
+AUTOMATIC DETAIL DIRECTION:
+${detail}. The generator automatically adds appropriate material and texture details for each object — such as realistic fabric, lace, embroidery, woven fibers, natural botanical textures, dimensional shading, delicate highlights and hand-painted surface variation. The user does not need to specify these.
 
 ELEMENTS:
 ${elements}
@@ -210,8 +211,8 @@ ${elements}
 COMPOSITION:
 ${composition}
 
-ADVANCED PROFESSIONAL ART DIRECTION:
-${advanced}
+AUTOMATIC PROFESSIONAL ART DIRECTION:
+Make every object look individually painted by a highly skilled botanical, nursery and stationery illustrator. Automatically apply intricate micro-detail, realistic material rendering, layered objects, natural imperfections, elegant proportions, subtle shadows, fine highlights and sophisticated color variation appropriate to each element.
 
 COHESION:
 All ${count} elements must clearly belong to the same professionally art-directed collection. Maintain identical illustration quality, line delicacy, paint texture, lighting direction, shading language, color harmony and level of detail across every object.
