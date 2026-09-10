@@ -34,6 +34,9 @@ textarea{min-height:100px;resize:vertical;line-height:1.5}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .check{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid #eee1dd;border-radius:10px;background:#fffdfc;font-size:13px}
+.swatches{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.swatch{width:24px;height:24px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #decfcb}
+.helper{font-size:11px;color:#9a8580;margin-top:5px;line-height:1.4}
 .check input{width:auto}
 button.primary{border:0;border-radius:12px;padding:13px 18px;background:#b96f79;color:#fff;font-weight:800;cursor:pointer;margin-top:18px;box-shadow:0 7px 18px rgba(185,111,121,.25)}
 button.secondary{border:1px solid #d8c5c1;border-radius:10px;padding:10px 13px;background:#fff;color:#6e5955;font-weight:700;cursor:pointer}
@@ -76,9 +79,28 @@ button.primary:hover{filter:brightness(.97);transform:translateY(-1px)}
     <div class="grid">
       <section class="card">
         <h3>Collection Builder</h3>
+        <p class="small">Choose a few simple options below. Clipart Studio handles the professional prompting for you.</p>
 
         <label>Collection Theme</label>
-        <input id="theme" value="Apple of My Eye Baby Shower">
+        <select id="theme" onchange="toggleCustomTheme()">
+          <option selected>Apple of My Eye Baby Shower</option>
+          <option>Baby Shower</option>
+          <option>First Birthday</option>
+          <option>Girl Birthday</option>
+          <option>Boy Birthday</option>
+          <option>Princess</option>
+          <option>Farmhouse Baby</option>
+          <option>Floral</option>
+          <option>Coquette</option>
+          <option>Southern</option>
+          <option>Coastal</option>
+          <option>Christmas</option>
+          <option>Fall</option>
+          <option>Teacher</option>
+          <option>Faith & Christian</option>
+          <option>Custom Theme</option>
+        </select>
+        <input id="customTheme" placeholder="Type your custom theme..." style="display:none;margin-top:8px;">
 
         <div class="row">
           <div>
@@ -108,7 +130,21 @@ button.primary:hover{filter:brightness(.97);transform:translateY(-1px)}
         </select>
 
         <label>Color Palette</label>
-        <input id="palette" value="Soft Pink, Dusty Rose, Lavender, Muted Sage Green, Warm Ivory, Cream, Soft Apple Red">
+        <select id="palette" onchange="updatePalettePreview()">
+          <option value="Soft Pink, Dusty Rose, Lavender, Muted Sage Green, Warm Ivory, Cream, Soft Apple Red" selected>🌸 Blush & Lavender</option>
+          <option value="Blush Pink, Rose, Cream, Sage Green, Warm Beige">🎀 Soft Baby Blush</option>
+          <option value="Lavender, Lilac, Dusty Plum, Cream, Sage">💜 Lavender Garden</option>
+          <option value="Sage Green, Ivory, Dusty Rose, Beige, Soft Brown">🌿 Sage & Blush</option>
+          <option value="Powder Blue, Baby Blue, Cream, Soft Gray, Sage">🩵 Baby Blue</option>
+          <option value="Butter Yellow, Cream, Soft Pink, Sage, Warm Beige">🌼 Buttercup</option>
+          <option value="Terracotta, Dusty Rose, Cream, Sage, Warm Brown">🍂 Vintage Autumn</option>
+          <option value="Muted Red, Forest Green, Cream, Soft Gold, Warm Brown">🎄 Vintage Christmas</option>
+          <option value="Coral, Peach, Butter Yellow, Aqua, Cream">☀️ Soft Summer</option>
+          <option value="Black, Cream, Dusty Rose, Taupe, Soft Gold">🖤 Feminine Neutral</option>
+          <option value="Custom Palette">🎨 Custom Palette</option>
+        </select>
+        <div id="palettePreview" class="swatches"></div>
+        <input id="customPalette" placeholder="Example: blush pink, cream, sage green..." style="display:none;margin-top:8px;" oninput="renderSwatches(this.value)">
 
         <label>Detail Level</label>
         <select id="detail">
@@ -117,25 +153,13 @@ button.primary:hover{filter:brightness(.97);transform:translateY(-1px)}
           <option>Rich — extra ornate and heirloom-quality</option>
         </select>
 
-        <label>Visual Finish</label>
-        <div class="checks">
-          <label class="check"><input type="checkbox" checked value="fine botanical linework"> Fine botanical linework</label>
-          <label class="check"><input type="checkbox" checked value="layered watercolor washes"> Layered watercolor washes</label>
-          <label class="check"><input type="checkbox" checked value="refined gouache highlights"> Refined gouache highlights</label>
-          <label class="check"><input type="checkbox" checked value="realistic dimensional shading"> Realistic dimensional shading</label>
-          <label class="check"><input type="checkbox" checked value="delicate natural textures"> Delicate natural textures</label>
-          <label class="check"><input type="checkbox" checked value="subtle antique paper-paint texture"> Subtle antique paper-paint texture</label>
-          <label class="check"><input type="checkbox" checked value="soft translucent color blending"> Soft translucent color blending</label>
-          <label class="check"><input type="checkbox" checked value="tiny hand-painted details"> Tiny hand-painted details</label>
-        </div>
-
         <label>Elements to Include</label>
         <textarea id="elements">apples, apple blossoms, baby bonnet, baby onesie/romper, baby booties, coquette bow, lavender gingham bow, basket filled with apples and flowers, apple blossom branch, floral cluster, decorative heart, pacifier with ribbon</textarea>
 
         <label>Composition Direction</label>
         <textarea id="composition">Clean collection sheet with separate, fully visible elements, generous whitespace, no overlapping objects, and one larger focal element when appropriate.</textarea>
 
-        <button class="primary" onclick="generate()">✨ Generate Premium Clipart Prompt</button>
+        <button class="primary" onclick="generate()">✨ Create My Clipart Prompt</button>
       </section>
 
       <section class="card output">
@@ -150,8 +174,8 @@ button.primary:hover{filter:brightness(.97);transform:translateY(-1px)}
         <div class="section-title">Suggested Collection Elements</div>
         <div id="elementList" class="element-list"></div>
 
-        <div class="section-title">Style Guardrails</div>
-        <p class="small">The engine automatically tells the image model to avoid flat vector art, simplistic watercolor, generic stock clipart, cartoon icons, sticker aesthetics, thick outlines, plastic-looking 3D renders, and minimal-detail artwork.</p>
+        <div class="section-title">✨ Built-in Premium Style</div>
+        <p class="small">The Studio automatically adds sophisticated detail, texture, shading, fine linework and professional art direction. You don't need to write the complicated stuff.</p>
 
         <div class="section-title">Why this version is different</div>
         <p class="small">You no longer have to know what materials, textures or advanced art terms to enter. Clipart Studio automatically adds the right details based on the theme and objects you choose.</p>
@@ -167,12 +191,51 @@ function checkedDetails(){
 function parseElements(){
   return document.getElementById('elements').value.split(',').map(x=>x.trim()).filter(Boolean);
 }
+function toggleCustomTheme(){
+  const custom=document.getElementById('customTheme');
+  custom.style.display=document.getElementById('theme').value==='Custom Theme'?'block':'none';
+}
+function updatePalettePreview(){
+  const select=document.getElementById('palette');
+  const custom=document.getElementById('customPalette');
+  custom.style.display=select.value==='Custom Palette'?'block':'none';
+  renderSwatches(select.value==='Custom Palette' ? custom.value : select.value);
+}
+function renderSwatches(value){
+  const box=document.getElementById('palettePreview');
+  const known={
+    'Soft Pink, Dusty Rose, Lavender, Muted Sage Green, Warm Ivory, Cream, Soft Apple Red':['#E8B6BD','#C97983','#B8A7C9','#A8B6A0','#FFF7EE','#F8EEE8','#C94F55'],
+    'Blush Pink, Rose, Cream, Sage Green, Warm Beige':['#F4C7CE','#D88991','#FFF6EE','#A8B6A0','#D9C2A6'],
+    'Lavender, Lilac, Dusty Plum, Cream, Sage':['#C7B8D8','#B29BC6','#806887','#FFF7F0','#A8B6A0'],
+    'Sage Green, Ivory, Dusty Rose, Beige, Soft Brown':['#A8B6A0','#FFF8EF','#D39AA1','#DCC7AF','#8A7068'],
+    'Powder Blue, Baby Blue, Cream, Soft Gray, Sage':['#C9DDF0','#A9C9E5','#FFF8F0','#D9D8D6','#A8B6A0'],
+    'Butter Yellow, Cream, Soft Pink, Sage, Warm Beige':['#F3D987','#FFF8EC','#E9B7BD','#A8B6A0','#D8BE9D'],
+    'Terracotta, Dusty Rose, Cream, Sage, Warm Brown':['#C98268','#D39AA1','#FFF5EA','#A8B6A0','#8A675B'],
+    'Muted Red, Forest Green, Cream, Soft Gold, Warm Brown':['#A95759','#526B55','#FFF7EC','#D5B66D','#765D58'],
+    'Coral, Peach, Butter Yellow, Aqua, Cream':['#E99A82','#F2B69F','#F1D37A','#A9D2D0','#FFF8EE'],
+    'Black, Cream, Dusty Rose, Taupe, Soft Gold':['#332F2E','#FFF7EE','#D29AA2','#A99A91','#D5B66D']
+  };
+  const colors=known[value] || value.split(',').map(x=>x.trim()).slice(0,7).map((_,i)=>['#E8B6BD','#B8A7C9','#A8B6A0','#FFF7EE','#D9C2A6'][i%5]);
+  box.innerHTML='';
+  colors.forEach(c=>{
+    const s=document.createElement('span'); s.className='swatch'; s.style.background=c; s.title=c; box.appendChild(s);
+  });
+}
+
 function generate(){
-  const theme=document.getElementById('theme').value.trim();
+  const themeSelect=document.getElementById('theme');
+  let theme=(themeSelect.value==='Custom Theme'
+    ? document.getElementById('customTheme').value.trim()
+    : themeSelect.value);
+  if(!theme) theme='Baby Shower';
   const count=document.getElementById('count').value;
   const format=document.getElementById('format').value;
   const style=document.getElementById('style').value;
-  const palette=document.getElementById('palette').value.trim();
+  const paletteSelect=document.getElementById('palette');
+  let palette=(paletteSelect.value==='Custom Palette'
+    ? document.getElementById('customPalette').value.trim()
+    : paletteSelect.value);
+  if(!palette) palette='Soft Pink, Cream, Sage Green, Lavender';
   const detail=document.getElementById('detail').value;
   const elements=document.getElementById('elements').value.trim();
   const composition=document.getElementById('composition').value.trim();
@@ -291,7 +354,7 @@ function downloadPrompt(){
   a.click();
   URL.revokeObjectURL(a.href);
 }
-generate();
+updatePalettePreview();\ngenerate();
 </script>
 </body>
 </html>
