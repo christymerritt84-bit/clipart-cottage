@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christy's Clipart Studio — Premium Edition</title>
+<style>
+:root{
+  --pink:#e9b7bd; --rose:#c97983; --cream:#fffaf6; --sage:#a8b6a0;
+  --lav:#b8a7c9; --brown:#765d58; --ink:#403936; --line:#eadbd7;
+  --white:#fff; --shadow:0 10px 30px rgba(92,67,63,.10);
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#fffaf7,#f8f1ef);color:var(--ink);
+font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.app{display:flex;min-height:100vh}
+.sidebar{width:250px;background:#fff;border-right:1px solid var(--line);padding:24px 16px;position:sticky;top:0;height:100vh}
+.brand{padding:10px 12px 24px}
+.brand h1{font-family:Georgia,serif;font-size:23px;margin:0;color:var(--brown)}
+.brand p{font-size:12px;color:#927c77;margin:6px 0 0}
+.nav button{width:100%;border:0;background:transparent;text-align:left;padding:12px 14px;border-radius:12px;margin:3px 0;color:#665653;cursor:pointer}
+.nav button.active,.nav button:hover{background:#f8e9e9;color:#8c515a;font-weight:700}
+.main{flex:1;padding:30px;max-width:1500px;margin:auto;width:100%}
+.hero{background:linear-gradient(120deg,#fff,#f8eded);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow);margin-bottom:22px}
+.hero h2{font-family:Georgia,serif;font-size:32px;margin:0 0 8px}
+.hero p{margin:0;color:#776864;max-width:850px;line-height:1.6}
+.badge{display:inline-block;background:#eadcf0;color:#725a7d;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:22px}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}
+.card h3{font-family:Georgia,serif;margin:0 0 16px;font-size:21px}
+label{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#806d68;margin:15px 0 7px}
+input,select,textarea{width:100%;border:1px solid #dfcfcb;background:#fffdfc;border-radius:11px;padding:11px 12px;font:inherit;color:var(--ink)}
+textarea{min-height:100px;resize:vertical;line-height:1.5}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.check{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid #eee1dd;border-radius:10px;background:#fffdfc;font-size:13px}
+.check input{width:auto}
+button.primary{border:0;border-radius:12px;padding:13px 18px;background:#b96f79;color:#fff;font-weight:800;cursor:pointer;margin-top:18px;box-shadow:0 7px 18px rgba(185,111,121,.25)}
+button.secondary{border:1px solid #d8c5c1;border-radius:10px;padding:10px 13px;background:#fff;color:#6e5955;font-weight:700;cursor:pointer}
+button.primary:hover{filter:brightness(.97);transform:translateY(-1px)}
+.output{min-height:520px}
+.promptbox{background:#fffaf7;border:1px solid #eadbd7;border-radius:14px;padding:17px;white-space:pre-wrap;line-height:1.65;font-size:13px;max-height:650px;overflow:auto}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.element-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.element{background:#faf5f3;border:1px solid #eadbd7;padding:10px;border-radius:10px;font-size:13px}
+.small{font-size:12px;color:#897773;line-height:1.5}
+.section-title{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:#8c716c;margin-top:20px}
+.footer-note{margin-top:20px;font-size:12px;color:#8c7772}
+@media(max-width:950px){.sidebar{display:none}.main{padding:16px}.grid{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <h1>Christy's Clipart Studio</h1>
+      <p>Premium Illustration Generator</p>
+    </div>
+    <div class="nav">
+      <button class="active">🎨 Clipart Studio</button>
+      <button onclick="alert('Use Clipart Studio to build your premium collections.')">✨ Design Bestie</button>
+      <button onclick="alert('Invitation tools can be added here later.')">💌 Invitations</button>
+      <button onclick="alert('POD tools can be added here later.')">👕 POD Designs</button>
+      <button onclick="alert('Etsy listing tools can be added here later.')">🛍️ Etsy Listing</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <section class="hero">
+      <span class="badge">Premium Clipart Engine</span>
+      <h2>Build sophisticated, heirloom-quality clipart</h2>
+      <p>This upgraded version is designed to stop producing generic “basic clipart.” It builds prompts around vintage botanical illustration, intricate hand-painted detail, dimensional rendering, realistic materials, layered florals, fabric texture, and coordinated stationery-quality art direction.</p>
+    </section>
+
+    <div class="grid">
+      <section class="card">
+        <h3>Collection Builder</h3>
+
+        <label>Collection Theme</label>
+        <input id="theme" value="Apple of My Eye Baby Shower">
+
+        <div class="row">
+          <div>
+            <label>Number of Elements</label>
+            <select id="count">
+              <option>8</option><option selected>12</option><option>16</option><option>20</option><option>24</option>
+            </select>
+          </div>
+          <div>
+            <label>Artwork Format</label>
+            <select id="format">
+              <option selected>Collection Sheet + individually isolated elements</option>
+              <option>Individually isolated elements</option>
+              <option>Collection sheet only</option>
+            </select>
+          </div>
+        </div>
+
+        <label>Primary Illustration Style</label>
+        <select id="style">
+          <option selected>Vintage Botanical Storybook Watercolor & Gouache</option>
+          <option>Heirloom Nursery Illustration</option>
+          <option>Antique Botanical Watercolor</option>
+          <option>Vintage Children's Book Illustration</option>
+          <option>Romantic Vintage Stationery Illustration</option>
+          <option>Detailed Hand-Painted Watercolor & Gouache</option>
+        </select>
+
+        <label>Color Palette</label>
+        <input id="palette" value="Soft Pink, Dusty Rose, Lavender, Muted Sage Green, Warm Ivory, Cream, Soft Apple Red">
+
+        <label>Visual Finish</label>
+        <div class="checks">
+          <label class="check"><input type="checkbox" checked value="fine botanical linework"> Fine botanical linework</label>
+          <label class="check"><input type="checkbox" checked value="layered watercolor washes"> Layered watercolor washes</label>
+          <label class="check"><input type="checkbox" checked value="refined gouache highlights"> Refined gouache highlights</label>
+          <label class="check"><input type="checkbox" checked value="realistic dimensional shading"> Realistic dimensional shading</label>
+          <label class="check"><input type="checkbox" checked value="delicate natural textures"> Delicate natural textures</label>
+          <label class="check"><input type="checkbox" checked value="subtle antique paper-paint texture"> Subtle antique paper-paint texture</label>
+          <label class="check"><input type="checkbox" checked value="soft translucent color blending"> Soft translucent color blending</label>
+          <label class="check"><input type="checkbox" checked value="tiny hand-painted details"> Tiny hand-painted details</label>
+        </div>
+
+        <label>Material Detail</label>
+        <textarea id="materials">Realistic woven wicker, soft cotton and linen, lace edging, satin ribbon, delicate embroidery, fabric folds, natural apple skin, leaf veins, flower petals, stems and fine botanical textures.</textarea>
+
+        <label>Elements to Include</label>
+        <textarea id="elements">apples, apple blossoms, baby bonnet, baby onesie/romper, baby booties, coquette bow, lavender gingham bow, basket filled with apples and flowers, apple blossom branch, floral cluster, decorative heart, pacifier with ribbon</textarea>
+
+        <label>Composition Direction</label>
+        <textarea id="composition">Create one cohesive collection displayed together on a clean white or very light ivory background. Every element must be separate, fully visible and extractable with generous whitespace. No overlapping objects. Include one larger focal element and coordinated supporting elements. Arrange the artwork like a premium vintage stationery clipart collection rather than a generic sticker sheet.</textarea>
+
+        <label>Advanced Art Direction</label>
+        <textarea id="advanced">Make every object look individually painted by a highly skilled botanical and children's stationery illustrator. Use intricate micro-detail, realistic material rendering, layered objects, natural imperfections, elegant proportions, subtle shadows, fine highlights, and sophisticated color variation. The finished artwork should feel expensive, polished, feminine, nostalgic and heirloom-quality.</textarea>
+
+        <button class="primary" onclick="generate()">✨ Generate Premium Clipart Prompt</button>
+      </section>
+
+      <section class="card output">
+        <h3>Your Premium Prompt</h3>
+        <div id="status" class="small">Build your collection and click Generate.</div>
+        <div id="prompt" class="promptbox">Your upgraded prompt will appear here.</div>
+        <div class="actions">
+          <button class="secondary" onclick="copyPrompt()">📋 Copy Full Prompt</button>
+          <button class="secondary" onclick="downloadPrompt()">⬇️ Save Prompt</button>
+        </div>
+
+        <div class="section-title">Suggested Collection Elements</div>
+        <div id="elementList" class="element-list"></div>
+
+        <div class="section-title">Style Guardrails</div>
+        <p class="small">The engine automatically tells the image model to avoid flat vector art, simplistic watercolor, generic stock clipart, cartoon icons, sticker aesthetics, thick outlines, plastic-looking 3D renders, and minimal-detail artwork.</p>
+
+        <div class="section-title">Why this version is different</div>
+        <p class="small">The prompt now emphasizes the qualities visible in premium vintage invitation artwork: botanical micro-detail, dimensional shading, realistic materials, layered florals, fabric construction, fine linework, controlled color variation, and heirloom stationery art direction.</p>
+      </section>
+    </div>
+  </main>
+</div>
+
+<script>
+function checkedDetails(){
+  return [...document.querySelectorAll('.check input:checked')].map(x=>x.value);
+}
+function parseElements(){
+  return document.getElementById('elements').value.split(',').map(x=>x.trim()).filter(Boolean);
+}
+function generate(){
+  const theme=document.getElementById('theme').value.trim();
+  const count=document.getElementById('count').value;
+  const format=document.getElementById('format').value;
+  const style=document.getElementById('style').value;
+  const palette=document.getElementById('palette').value.trim();
+  const materials=document.getElementById('materials').value.trim();
+  const elements=document.getElementById('elements').value.trim();
+  const composition=document.getElementById('composition').value.trim();
+  const advanced=document.getElementById('advanced').value.trim();
+  const finish=checkedDetails().join(', ');
+
+  const prompt =
+`COMMERCIAL-QUALITY PREMIUM ILLUSTRATED CLIPART COLLECTION
+
+THEME / COLLECTION:
+${theme}
+
+QUANTITY:
+Approximately ${count} coordinated elements.
+
+PRIMARY ART STYLE:
+${style}.
+
+CORE ART DIRECTION:
+Create sophisticated, high-end illustrated artwork designed as individually usable digital clipart. The artwork must look like premium vintage stationery or heirloom children's book illustration rather than generic clipart. Every object should appear carefully hand-painted by a skilled botanical and nursery illustrator.
+
+RENDERING:
+Highly detailed hand-painted watercolor and gouache with ${finish}. Use nuanced color variation, layered transparent washes, controlled pigment edges, refined opaque gouache accents, realistic highlights and soft dimensional shadows. Preserve delicate natural imperfections that make the artwork feel genuinely painted.
+
+DETAIL LEVEL:
+Extremely detailed. Include fine botanical linework, visible leaf veins, individual petals, realistic stems, subtle flower centers, natural apple skin variation, tiny fabric construction details, lace, stitching, embroidery, woven fibers, satin texture, folds and believable material transitions wherever appropriate. Small details should remain elegant rather than cluttered.
+
+COLOR PALETTE:
+${palette}
+
+MATERIAL / TEXTURE DIRECTION:
+${materials}
+
+ELEMENTS:
+${elements}
+
+COMPOSITION:
+${composition}
+
+ADVANCED PROFESSIONAL ART DIRECTION:
+${advanced}
+
+COHESION:
+All ${count} elements must clearly belong to the same professionally art-directed collection. Maintain identical illustration quality, line delicacy, paint texture, lighting direction, shading language, color harmony and level of detail across every object.
+
+ISOLATION / EXTRACTABILITY:
+${format}. Keep every element visually separate. No accidental overlaps, merged objects, cropped objects, hidden details or tangled edges. Give each object generous breathing room and clean cutout-friendly contours while retaining natural painted edges.
+
+FOCAL ELEMENT:
+Make the basket filled with apples and blossoms the larger hero element when the theme calls for it. Surround it with smaller matching objects without turning the sheet into a scene.
+
+PREMIUM QUALITY TARGET:
+Elegant, nostalgic, feminine, refined, heirloom-quality, richly rendered, polished, sophisticated, Etsy-premium, invitation-stationery quality.
+
+NEGATIVE STYLE LOCK:
+Do NOT create basic clipart, generic stock clipart, flat vector graphics, simplistic watercolor, cartoon icons, kawaii art, emoji-like objects, sticker aesthetics, thick black outlines, crude shapes, flat fills, minimal detail, plastic-looking 3D objects, glossy CGI, toy-like rendering, childish proportions, overly saturated colors, messy composition, overlapping objects, text, typography, labels, logos, watermark, mockup, room scene, product display or background scenery.`;
+
+  document.getElementById('prompt').textContent=prompt;
+  document.getElementById('status').textContent='Premium prompt generated — built for sophisticated, detailed illustration.';
+  const list=document.getElementById('elementList');
+  list.innerHTML='';
+  parseElements().slice(0,24).forEach((e,i)=>{
+    const d=document.createElement('div'); d.className='element';
+    d.textContent=(i+1)+'. '+e; list.appendChild(d);
+  });
+}
+function copyPrompt(){
+  const text=document.getElementById('prompt').textContent;
+  if(!text || text==='Your upgraded prompt will appear here.') return;
+  navigator.clipboard.writeText(text).then(()=>alert('Premium prompt copied!'));
+}
+function downloadPrompt(){
+  const text=document.getElementById('prompt').textContent;
+  if(!text || text==='Your upgraded prompt will appear here.') return;
+  const blob=new Blob([text],{type:'text/plain'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='Christys-Premium-Clipart-Prompt.txt';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+generate();
+</script>
+</body>
+</html>
