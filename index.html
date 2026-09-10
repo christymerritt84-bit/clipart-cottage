@@ -79,7 +79,7 @@ button.primary:hover{filter:brightness(.97);transform:translateY(-1px)}
     <div class="grid">
       <section class="card">
         <h3>Collection Builder</h3>
-        <p class="small">Choose a few simple options below. Clipart Studio handles the professional prompting for you.</p>
+        <p class="small">Choose a few simple options below. When you select <b>Custom</b>, your own entry box will appear automatically.</p>
 
         <label>Collection Theme</label>
         <select id="theme" onchange="toggleCustomTheme()">
@@ -100,7 +100,11 @@ button.primary:hover{filter:brightness(.97);transform:translateY(-1px)}
           <option>Faith & Christian</option>
           <option>Custom Theme</option>
         </select>
-        <input id="customTheme" placeholder="Type your custom theme..." style="display:none;margin-top:8px;">
+        <div id="customThemeWrap" style="display:none;">
+          <input id="customTheme" placeholder="Type your custom theme here..." style="margin-top:8px;">
+          <div class="helper">Enter your own theme, such as "Vintage Peter Rabbit Baby Shower".</div>
+        </div>
+        <div class="helper">Need something different? Choose <b>Custom Theme</b>.</div>
 
         <div class="row">
           <div>
@@ -120,14 +124,23 @@ button.primary:hover{filter:brightness(.97);transform:translateY(-1px)}
         </div>
 
         <label>Primary Illustration Style</label>
-        <select id="style">
+        <select id="style" onchange="toggleCustomStyle()">
           <option selected>Vintage Botanical Storybook Watercolor & Gouache</option>
           <option>Heirloom Nursery Illustration</option>
           <option>Antique Botanical Watercolor</option>
           <option>Vintage Children's Book Illustration</option>
           <option>Romantic Vintage Stationery Illustration</option>
           <option>Detailed Hand-Painted Watercolor & Gouache</option>
+          <option>Soft Whimsical Watercolor</option>
+          <option>Vintage Farmhouse Illustration</option>
+          <option>Coastal Watercolor Illustration</option>
+          <option>Retro Hand-Painted Illustration</option>
+          <option>Custom Style</option>
         </select>
+        <div id="customStyleWrap" style="display:none;">
+          <input id="customStyle" placeholder="Type your own style here..." style="margin-top:8px;">
+          <div class="helper">Describe the look, such as "soft vintage French cottage watercolor".</div>
+        </div>
 
         <label>Color Palette</label>
         <select id="palette" onchange="updatePalettePreview()">
@@ -144,7 +157,11 @@ button.primary:hover{filter:brightness(.97);transform:translateY(-1px)}
           <option value="Custom Palette">🎨 Custom Palette</option>
         </select>
         <div id="palettePreview" class="swatches"></div>
-        <input id="customPalette" placeholder="Example: blush pink, cream, sage green..." style="display:none;margin-top:8px;" oninput="renderSwatches(this.value)">
+        <div id="customPaletteWrap" style="display:none;">
+          <input id="customPalette" placeholder="Type your colors here..." style="margin-top:8px;" oninput="renderSwatches(this.value)">
+          <div class="helper">Example: dusty pink, mauve, ivory, sage green, champagne.</div>
+        </div>
+        <div class="helper">Choose a preset or make your own color palette.</div>
 
         <label>Detail Level</label>
         <select id="detail">
@@ -155,6 +172,10 @@ button.primary:hover{filter:brightness(.97);transform:translateY(-1px)}
 
         <label>Elements to Include</label>
         <textarea id="elements">apples, apple blossoms, baby bonnet, baby onesie/romper, baby booties, coquette bow, lavender gingham bow, basket filled with apples and flowers, apple blossom branch, floral cluster, decorative heart, pacifier with ribbon</textarea>
+
+        <label>Special Requests <span style="font-weight:600;text-transform:none;letter-spacing:0;">(optional)</span></label>
+        <textarea id="special" placeholder="Anything else you want? Example: add tiny daisies, use scalloped edges, make the bows extra feminine..."></textarea>
+        <div class="helper">Use this for any extra idea that isn't covered by the other options.</div>
 
         <label>Composition Direction</label>
         <textarea id="composition">Clean collection sheet with separate, fully visible elements, generous whitespace, no overlapping objects, and one larger focal element when appropriate.</textarea>
@@ -191,15 +212,28 @@ function checkedDetails(){
 function parseElements(){
   return document.getElementById('elements').value.split(',').map(x=>x.trim()).filter(Boolean);
 }
+function toggleCustomStyle(){
+  const wrap=document.getElementById('customStyleWrap');
+  const input=document.getElementById('customStyle');
+  const show=document.getElementById('style').value==='Custom Style';
+  wrap.style.display=show?'block':'none';
+  if(show) setTimeout(()=>input.focus(), 50);
+}
 function toggleCustomTheme(){
-  const custom=document.getElementById('customTheme');
-  custom.style.display=document.getElementById('theme').value==='Custom Theme'?'block':'none';
+  const wrap=document.getElementById('customThemeWrap');
+  const input=document.getElementById('customTheme');
+  const show=document.getElementById('theme').value==='Custom Theme';
+  wrap.style.display=show?'block':'none';
+  if(show) setTimeout(()=>input.focus(), 50);
 }
 function updatePalettePreview(){
   const select=document.getElementById('palette');
+  const customWrap=document.getElementById('customPaletteWrap');
   const custom=document.getElementById('customPalette');
-  custom.style.display=select.value==='Custom Palette'?'block':'none';
-  renderSwatches(select.value==='Custom Palette' ? custom.value : select.value);
+  const show=select.value==='Custom Palette';
+  customWrap.style.display=show?'block':'none';
+  if(show) setTimeout(()=>custom.focus(), 50);
+  renderSwatches(show ? custom.value : select.value);
 }
 function renderSwatches(value){
   const box=document.getElementById('palettePreview');
@@ -230,7 +264,13 @@ function generate(){
   if(!theme) theme='Baby Shower';
   const count=document.getElementById('count').value;
   const format=document.getElementById('format').value;
-  const style=document.getElementById('style').value;
+  const styleSelect=document.getElementById('style');
+  let style=(styleSelect.value==='Custom Style'
+    ? document.getElementById('customStyle').value.trim()
+    : styleSelect.value);
+  if(!style) style='Vintage Botanical Storybook Watercolor & Gouache';
+
+  const special=document.getElementById('special').value.trim();
   const paletteSelect=document.getElementById('palette');
   let palette=(paletteSelect.value==='Custom Palette'
     ? document.getElementById('customPalette').value.trim()
@@ -270,6 +310,9 @@ ${detail}. The generator automatically adds appropriate material and texture det
 
 ELEMENTS:
 ${elements}
+
+OPTIONAL SPECIAL REQUESTS:
+${special || 'None specified. Use the selected theme, style and palette as the creative direction.'}
 
 COMPOSITION:
 ${composition}
@@ -354,7 +397,8 @@ function downloadPrompt(){
   a.click();
   URL.revokeObjectURL(a.href);
 }
-updatePalettePreview();\ngenerate();
+updatePalettePreview();
+generate();
 </script>
 </body>
 </html>
