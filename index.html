@@ -3,431 +3,294 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Invitation Suite Generator Pro</title>
-
+<title>Christy's Clipart Studio — Premium Edition</title>
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Inter,sans-serif;
+:root{
+  --pink:#e9b7bd; --rose:#c97983; --cream:#fffaf6; --sage:#a8b6a0;
+  --lav:#b8a7c9; --brown:#765d58; --ink:#403936; --line:#eadbd7;
+  --white:#fff; --shadow:0 10px 30px rgba(92,67,63,.10);
 }
-
-body{
-background:#f8f5f0;
-padding:40px;
-color:#222;
-}
-
-.container{
-max-width:1400px;
-margin:auto;
-}
-
-.hero{
-background:#111;
-color:white;
-padding:60px;
-border-radius:20px;
-margin-bottom:30px;
-text-align:center;
-}
-
-.hero h1{
-font-size:3rem;
-margin-bottom:15px;
-}
-
-.hero p{
-opacity:.8;
-}
-
-.generator{
-background:white;
-padding:30px;
-border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,.08);
-}
-
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
-margin-bottom:25px;
-}
-
-.field{
-display:flex;
-flex-direction:column;
-gap:8px;
-}
-
-label{
-font-weight:600;
-font-size:.9rem;
-}
-
-input,select,textarea{
-padding:14px;
-border:1px solid #ddd;
-border-radius:12px;
-font-size:1rem;
-}
-
-.section-title{
-font-size:1.2rem;
-margin:25px 0 15px;
-font-weight:700;
-}
-
-.toggle-container{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-}
-
-.toggle{
-padding:12px 18px;
-background:#eee;
-border-radius:999px;
-cursor:pointer;
-transition:.25s;
-user-select:none;
-}
-
-.toggle.active{
-background:#111;
-color:white;
-}
-
-.button-row{
-display:flex;
-gap:15px;
-margin-top:25px;
-flex-wrap:wrap;
-}
-
-button{
-padding:16px 25px;
-border:none;
-border-radius:14px;
-cursor:pointer;
-font-size:1rem;
-font-weight:700;
-}
-
-.generate{
-background:#111;
-color:white;
-}
-
-.random{
-background:#d9b26b;
-color:white;
-}
-
-.copy{
-background:#2f855a;
-color:white;
-}
-
-.output{
-margin-top:35px;
-}
-
-.output-card{
-background:#fafafa;
-padding:25px;
-border-radius:16px;
-margin-bottom:20px;
-border:1px solid #e5e5e5;
-}
-
-.output-card h3{
-margin-bottom:15px;
-}
-
-.output-text{
-white-space:pre-wrap;
-line-height:1.7;
-}
-
-@media(max-width:900px){
-.grid{
-grid-template-columns:1fr;
-}
-.hero h1{
-font-size:2rem;
-}
-}
-
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#fffaf7,#f8f1ef);color:var(--ink);
+font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.app{display:flex;min-height:100vh}
+.sidebar{width:250px;background:#fff;border-right:1px solid var(--line);padding:24px 16px;position:sticky;top:0;height:100vh}
+.brand{padding:10px 12px 24px}
+.brand h1{font-family:Georgia,serif;font-size:23px;margin:0;color:var(--brown)}
+.brand p{font-size:12px;color:#927c77;margin:6px 0 0}
+.nav button{width:100%;border:0;background:transparent;text-align:left;padding:12px 14px;border-radius:12px;margin:3px 0;color:#665653;cursor:pointer}
+.nav button.active,.nav button:hover{background:#f8e9e9;color:#8c515a;font-weight:700}
+.main{flex:1;padding:30px;max-width:1500px;margin:auto;width:100%}
+.hero{background:linear-gradient(120deg,#fff,#f8eded);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow);margin-bottom:22px}
+.hero h2{font-family:Georgia,serif;font-size:32px;margin:0 0 8px}
+.hero p{margin:0;color:#776864;max-width:850px;line-height:1.6}
+.badge{display:inline-block;background:#eadcf0;color:#725a7d;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:22px}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}
+.card h3{font-family:Georgia,serif;margin:0 0 16px;font-size:21px}
+label{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#806d68;margin:15px 0 7px}
+input,select,textarea{width:100%;border:1px solid #dfcfcb;background:#fffdfc;border-radius:11px;padding:11px 12px;font:inherit;color:var(--ink)}
+textarea{min-height:100px;resize:vertical;line-height:1.5}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.check{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid #eee1dd;border-radius:10px;background:#fffdfc;font-size:13px}
+.check input{width:auto}
+button.primary{border:0;border-radius:12px;padding:13px 18px;background:#b96f79;color:#fff;font-weight:800;cursor:pointer;margin-top:18px;box-shadow:0 7px 18px rgba(185,111,121,.25)}
+button.secondary{border:1px solid #d8c5c1;border-radius:10px;padding:10px 13px;background:#fff;color:#6e5955;font-weight:700;cursor:pointer}
+button.primary:hover{filter:brightness(.97);transform:translateY(-1px)}
+.output{min-height:520px}
+.promptbox{background:#fffaf7;border:1px solid #eadbd7;border-radius:14px;padding:17px;white-space:pre-wrap;line-height:1.65;font-size:13px;max-height:650px;overflow:auto}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.element-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.element{background:#faf5f3;border:1px solid #eadbd7;padding:10px;border-radius:10px;font-size:13px}
+.small{font-size:12px;color:#897773;line-height:1.5}
+.section-title{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:#8c716c;margin-top:20px}
+.footer-note{margin-top:20px;font-size:12px;color:#8c7772}
+@media(max-width:950px){.sidebar{display:none}.main{padding:16px}.grid{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
 </style>
 </head>
-
 <body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <h1>Christy's Clipart Studio</h1>
+      <p>Premium Illustration Generator</p>
+    </div>
+    <div class="nav">
+      <button class="active">🎨 Clipart Studio</button>
+      <button onclick="alert('Use Clipart Studio to build your premium collections.')">✨ Design Bestie</button>
+      <button onclick="alert('Invitation tools can be added here later.')">💌 Invitations</button>
+      <button onclick="alert('POD tools can be added here later.')">👕 POD Designs</button>
+      <button onclick="alert('Etsy listing tools can be added here later.')">🛍️ Etsy Listing</button>
+    </div>
+  </aside>
 
-<div class="container">
+  <main class="main">
+    <section class="hero">
+      <span class="badge">Premium Clipart Engine</span>
+      <h2>Build sophisticated, heirloom-quality clipart</h2>
+      <p>This upgraded version is designed to stop producing generic “basic clipart.” It builds prompts around vintage botanical illustration, intricate hand-painted detail, dimensional rendering, realistic materials, layered florals, fabric texture, and coordinated stationery-quality art direction.</p>
+    </section>
 
-<div class="hero">
-<h1>Invitation Suite Generator Pro</h1>
-<p>Create complete invitation suite prompts for Canva, AI Art & Etsy products.</p>
-</div>
+    <div class="grid">
+      <section class="card">
+        <h3>Collection Builder</h3>
 
-<div class="generator">
+        <label>Collection Theme</label>
+        <input id="theme" value="Apple of My Eye Baby Shower">
 
-<div class="grid">
+        <div class="row">
+          <div>
+            <label>Number of Elements</label>
+            <select id="count">
+              <option>8</option><option selected>12</option><option>16</option><option>20</option><option>24</option>
+            </select>
+          </div>
+          <div>
+            <label>Artwork Format</label>
+            <select id="format">
+              <option selected>Collection Sheet + individually isolated elements</option>
+              <option>Individually isolated elements</option>
+              <option>Collection sheet only</option>
+            </select>
+          </div>
+        </div>
 
-<div class="field">
-<label>Occasion</label>
-<select id="occasion">
-<option>Baby Shower</option>
-<option>Birthday</option>
-<option>Wedding</option>
-<option>Bridal Shower</option>
-<option>Graduation</option>
-<option>Retirement</option>
-<option>Custom</option>
-</select>
-</div>
+        <label>Primary Illustration Style</label>
+        <select id="style">
+          <option selected>Vintage Botanical Storybook Watercolor & Gouache</option>
+          <option>Heirloom Nursery Illustration</option>
+          <option>Antique Botanical Watercolor</option>
+          <option>Vintage Children's Book Illustration</option>
+          <option>Romantic Vintage Stationery Illustration</option>
+          <option>Detailed Hand-Painted Watercolor & Gouache</option>
+        </select>
 
-<div class="field">
-<label>Theme</label>
-<select id="theme">
-<option>Boho</option>
-<option>Floral</option>
-<option>Rustic</option>
-<option>Coastal</option>
-<option>Safari</option>
-<option>Princess</option>
-<option>Fall Pumpkin</option>
-<option>Vintage</option>
-<option>Custom</option>
-</select>
-</div>
+        <label>Color Palette</label>
+        <input id="palette" value="Soft Pink, Dusty Rose, Lavender, Muted Sage Green, Warm Ivory, Cream, Soft Apple Red">
 
-<div class="field">
-<label>Custom Theme</label>
-<input id="customTheme" placeholder="Enter custom theme">
-</div>
+        <label>Visual Finish</label>
+        <div class="checks">
+          <label class="check"><input type="checkbox" checked value="fine botanical linework"> Fine botanical linework</label>
+          <label class="check"><input type="checkbox" checked value="layered watercolor washes"> Layered watercolor washes</label>
+          <label class="check"><input type="checkbox" checked value="refined gouache highlights"> Refined gouache highlights</label>
+          <label class="check"><input type="checkbox" checked value="realistic dimensional shading"> Realistic dimensional shading</label>
+          <label class="check"><input type="checkbox" checked value="delicate natural textures"> Delicate natural textures</label>
+          <label class="check"><input type="checkbox" checked value="subtle antique paper-paint texture"> Subtle antique paper-paint texture</label>
+          <label class="check"><input type="checkbox" checked value="soft translucent color blending"> Soft translucent color blending</label>
+          <label class="check"><input type="checkbox" checked value="tiny hand-painted details"> Tiny hand-painted details</label>
+        </div>
 
-<div class="field">
-<label>Honoree Name</label>
-<input id="honoree" placeholder="Stephanie Smith">
-</div>
+        <label>Material Detail</label>
+        <textarea id="materials">Realistic woven wicker, soft cotton and linen, lace edging, satin ribbon, delicate embroidery, fabric folds, natural apple skin, leaf veins, flower petals, stems and fine botanical textures.</textarea>
 
-<div class="field">
-<label>Date</label>
-<input id="date" placeholder="September 12">
-</div>
+        <label>Elements to Include</label>
+        <textarea id="elements">apples, apple blossoms, baby bonnet, baby onesie/romper, baby booties, coquette bow, lavender gingham bow, basket filled with apples and flowers, apple blossom branch, floral cluster, decorative heart, pacifier with ribbon</textarea>
 
-<div class="field">
-<label>Time</label>
-<input id="time" placeholder="1:00 PM">
-</div>
+        <label>Composition Direction</label>
+        <textarea id="composition">Create one cohesive collection displayed together on a clean white or very light ivory background. Every element must be separate, fully visible and extractable with generous whitespace. No overlapping objects. Include one larger focal element and coordinated supporting elements. Arrange the artwork like a premium vintage stationery clipart collection rather than a generic sticker sheet.</textarea>
 
-<div class="field">
-<label>Location</label>
-<input id="location" placeholder="The Smith Residence">
-</div>
+        <label>Advanced Art Direction</label>
+        <textarea id="advanced">Make every object look individually painted by a highly skilled botanical and children's stationery illustrator. Use intricate micro-detail, realistic material rendering, layered objects, natural imperfections, elegant proportions, subtle shadows, fine highlights, and sophisticated color variation. The finished artwork should feel expensive, polished, feminine, nostalgic and heirloom-quality.</textarea>
 
-<div class="field">
-<label>Design Style</label>
-<select id="style">
-<option>Watercolor</option>
-<option>Luxury</option>
-<option>Minimalist</option>
-<option>Vintage</option>
-<option>Elegant</option>
-<option>Whimsical</option>
-<option>Cottagecore</option>
-</select>
-</div>
+        <button class="primary" onclick="generate()">✨ Generate Premium Clipart Prompt</button>
+      </section>
 
-</div>
+      <section class="card output">
+        <h3>Your Premium Prompt</h3>
+        <div id="status" class="small">Build your collection and click Generate.</div>
+        <div id="prompt" class="promptbox">Your upgraded prompt will appear here.</div>
+        <div class="actions">
+          <button class="secondary" onclick="copyPrompt()">📋 Copy Full Prompt</button>
+          <button class="secondary" onclick="downloadPrompt()">⬇️ Save Prompt</button>
+        </div>
 
-<div class="section-title">
-Elements To Include
-</div>
+        <div class="section-title">Suggested Collection Elements</div>
+        <div id="elementList" class="element-list"></div>
 
-<div class="toggle-container">
+        <div class="section-title">Style Guardrails</div>
+        <p class="small">The engine automatically tells the image model to avoid flat vector art, simplistic watercolor, generic stock clipart, cartoon icons, sticker aesthetics, thick outlines, plastic-looking 3D renders, and minimal-detail artwork.</p>
 
-<div class="toggle active">Invitation Card</div>
-<div class="toggle active">RSVP Card</div>
-<div class="toggle">Save The Date</div>
-<div class="toggle">Thank You Card</div>
-<div class="toggle">Envelope Liner</div>
-<div class="toggle">Registry Card</div>
-<div class="toggle">Itinerary Card</div>
-<div class="toggle">Welcome Sign</div>
-<div class="toggle">Menu Card</div>
-<div class="toggle">Favor Tag</div>
-<div class="toggle">Matching Clipart Bundle</div>
-<div class="toggle">Social Media Graphic</div>
-
-</div>
-
-<div class="button-row">
-
-<button class="generate" onclick="generateSuite()">
-Generate Invitation Suite
-</button>
-
-<button class="random" onclick="randomizeAll()">
-Randomize Everything
-</button>
-
-<button class="copy" onclick="copyAll()">
-Copy All
-</button>
-
-</div>
-
-<div class="output">
-
-<div class="output-card">
-<h3>Design Brief</h3>
-<div class="output-text" id="brief"></div>
-</div>
-
-<div class="output-card">
-<h3>AI Image Prompt</h3>
-<div class="output-text" id="imagePrompt"></div>
-</div>
-
-<div class="output-card">
-<h3>Canva Layout Prompt</h3>
-<div class="output-text" id="canvaPrompt"></div>
-</div>
-
-<div class="output-card">
-<h3>Clipart Prompt</h3>
-<div class="output-text" id="clipartPrompt"></div>
-</div>
-
-<div class="output-card">
-<h3>Marketing Description</h3>
-<div class="output-text" id="marketing"></div>
-</div>
-
-</div>
-
-</div>
-
+        <div class="section-title">Why this version is different</div>
+        <p class="small">The prompt now emphasizes the qualities visible in premium vintage invitation artwork: botanical micro-detail, dimensional shading, realistic materials, layered florals, fabric construction, fine linework, controlled color variation, and heirloom stationery art direction.</p>
+      </section>
+    </div>
+  </main>
 </div>
 
 <script>
-
-const toggles=document.querySelectorAll(".toggle");
-
-toggles.forEach(btn=>{
-btn.addEventListener("click",()=>{
-btn.classList.toggle("active");
-});
-});
-
-function selectedElements(){
-return [...document.querySelectorAll(".toggle.active")]
-.map(x=>x.innerText)
-.join(", ");
+function checkedDetails(){
+  return [...document.querySelectorAll('.check input:checked')].map(x=>x.value);
 }
-
-function generateSuite(){
-
-let occasion=document.getElementById("occasion").value;
-
-let theme=document.getElementById("theme").value;
-
-let customTheme=document.getElementById("customTheme").value;
-
-if(theme==="Custom" && customTheme!==""){
-theme=customTheme;
+function parseElements(){
+  return document.getElementById('elements').value.split(',').map(x=>x.trim()).filter(Boolean);
 }
+function generate(){
+  const theme=document.getElementById('theme').value.trim();
+  const count=document.getElementById('count').value;
+  const format=document.getElementById('format').value;
+  const style=document.getElementById('style').value;
+  const palette=document.getElementById('palette').value.trim();
+  const materials=document.getElementById('materials').value.trim();
+  const elements=document.getElementById('elements').value.trim();
+  const composition=document.getElementById('composition').value.trim();
+  const advanced=document.getElementById('advanced').value.trim();
+  const finish=checkedDetails().join(', ');
 
-let honoree=document.getElementById("honoree").value;
+  const prompt =
+`COMMERCIAL-QUALITY PREMIUM ILLUSTRATED CLIPART COLLECTION
 
-let date=document.getElementById("date").value;
+THEME / COLLECTION:
+${theme}
 
-let time=document.getElementById("time").value;
+QUANTITY:
+Approximately ${count} coordinated elements.
 
-let location=document.getElementById("location").value;
+PRIMARY ART STYLE:
+${style}.
 
-let style=document.getElementById("style").value;
+CORE ART DIRECTION:
+Create sophisticated, high-end illustrated artwork designed as individually usable digital clipart. The artwork must look like premium vintage stationery or heirloom children's book illustration rather than generic clipart. Every object should appear carefully hand-painted by a skilled botanical and nursery illustrator.
 
-let elements=selectedElements();
+RENDERING:
+Highly detailed hand-painted watercolor and gouache with ${finish}. Use nuanced color variation, layered transparent washes, controlled pigment edges, refined opaque gouache accents, realistic highlights and soft dimensional shadows. Preserve delicate natural imperfections that make the artwork feel genuinely painted.
 
-document.getElementById("brief").innerText=
-`Create a premium ${style.toLowerCase()} ${occasion.toLowerCase()} invitation suite themed around ${theme}. Include matching stationery pieces: ${elements}. Feature cohesive artwork, luxury typography, coordinated color palette and Etsy-ready design assets.`;
+DETAIL LEVEL:
+Extremely detailed. Include fine botanical linework, visible leaf veins, individual petals, realistic stems, subtle flower centers, natural apple skin variation, tiny fabric construction details, lace, stitching, embroidery, woven fibers, satin texture, folds and believable material transitions wherever appropriate. Small details should remain elegant rather than cluttered.
 
-document.getElementById("imagePrompt").innerText=
-`${style} ${occasion} invitation suite, ${theme} theme, premium stationery mockup, elegant typography, coordinated paper goods, luxury event branding, matching invitation collection, highly detailed, professional design, ultra realistic, 8k`;
+COLOR PALETTE:
+${palette}
 
-document.getElementById("canvaPrompt").innerText=
-`Design a complete Canva invitation suite for ${honoree}. Event date ${date}, time ${time}, location ${location}. Include ${elements}. Maintain cohesive branding throughout all pieces.`;
+MATERIAL / TEXTURE DIRECTION:
+${materials}
 
-document.getElementById("clipartPrompt").innerText=
-`Create a matching clipart collection for a ${theme} themed ${occasion}. Include decorative elements, florals, borders, icons, accent pieces, isolated PNG artwork, transparent background, commercial-use quality.`;
+ELEMENTS:
+${elements}
 
-document.getElementById("marketing").innerText=
-`Beautiful ${theme} ${occasion} invitation suite featuring coordinated event stationery. Includes ${elements}. Perfect for Etsy sellers, Canva creators and event designers seeking professionally branded invitation products.`;
+COMPOSITION:
+${composition}
 
+ADVANCED PROFESSIONAL ART DIRECTION:
+${advanced}
+
+COHESION:
+All ${count} elements must clearly belong to the same professionally art-directed collection. Maintain identical illustration quality, line delicacy, paint texture, lighting direction, shading language, color harmony and level of detail across every object.
+
+ISOLATION / EXTRACTABILITY:
+${format}. Keep every element visually separate. No accidental overlaps, merged objects, cropped objects, hidden details or tangled edges. Give each object generous breathing room and clean cutout-friendly contours while retaining natural painted edges.
+
+FOCAL ELEMENT:
+Make the basket filled with apples and blossoms the larger hero element when the theme calls for it. Surround it with smaller matching objects without turning the sheet into a scene.
+
+PREMIUM QUALITY TARGET:
+Elegant, nostalgic, feminine, refined, heirloom-quality, richly rendered, polished, sophisticated, Etsy-premium, invitation-stationery quality.
+
+NEGATIVE STYLE LOCK:
+Do NOT create basic clipart, generic stock clipart, flat vector graphics, simplistic watercolor, cartoon icons, kawaii art, emoji-like objects, sticker aesthetics, thick black outlines, crude shapes, flat fills, minimal detail, plastic-looking 3D objects, glossy CGI, toy-like rendering, childish proportions, overly saturated colors, messy composition, overlapping objects, text, typography, labels, logos, watermark, mockup, room scene, product display or background scenery.`;
+
+  document.getElementById('prompt').textContent=prompt;
+  document.getElementById('status').textContent='Premium prompt generated — built for sophisticated, detailed illustration.';
+  const list=document.getElementById('elementList');
+  list.innerHTML='';
+  parseElements().slice(0,24).forEach((e,i)=>{
+    const d=document.createElement('div'); d.className='element';
+    d.textContent=(i+1)+'. '+e; list.appendChild(d);
+  });
 }
+async function copyPrompt(){
+  const box = document.getElementById('prompt');
+  const text = box.innerText || box.textContent || '';
+  const button = document.querySelector('.actions button');
 
-function randomizeAll(){
+  if(!text.trim() || text.trim()==='Your upgraded prompt will appear here.') return;
 
-const themes=[
-"Fall Pumpkin",
-"Wildflower",
-"Coastal",
-"Boho Rainbow",
-"Safari",
-"Vintage Rose",
-"Rustic Barn",
-"Princess Garden"
-];
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      const temp = document.createElement('textarea');
+      temp.value = text;
+      temp.style.position = 'fixed';
+      temp.style.left = '-9999px';
+      temp.style.top = '0';
+      document.body.appendChild(temp);
+      temp.focus();
+      temp.select();
+      temp.setSelectionRange(0, temp.value.length);
+      const copied = document.execCommand('copy');
+      document.body.removeChild(temp);
+      if (!copied) throw new Error('Copy command failed');
+    }
 
-const styles=[
-"Watercolor",
-"Luxury",
-"Elegant",
-"Whimsical",
-"Cottagecore"
-];
+    const original = button.textContent;
+    button.textContent = '✓ Copied!';
+    button.disabled = true;
+    setTimeout(() => {
+      button.textContent = original;
+      button.disabled = false;
+    }, 1800);
 
-document.getElementById("theme").value="Custom";
-document.getElementById("customTheme").value=
-themes[Math.floor(Math.random()*themes.length)];
-
-document.getElementById("style").value=
-styles[Math.floor(Math.random()*styles.length)];
-
-generateSuite();
-
+  } catch (err) {
+    // Last-resort fallback: select the prompt so the user can press Ctrl/Cmd+C.
+    const range = document.createRange();
+    range.selectNodeContents(box);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    alert('The browser blocked automatic copying. The prompt is selected now — press Ctrl+C (Windows) or Cmd+C (Mac) to copy it.');
+  }
 }
-
-function copyAll(){
-
-const text=
-document.getElementById("brief").innerText +
-"\n\n" +
-document.getElementById("imagePrompt").innerText +
-"\n\n" +
-document.getElementById("canvaPrompt").innerText +
-"\n\n" +
-document.getElementById("clipartPrompt").innerText +
-"\n\n" +
-document.getElementById("marketing").innerText;
-
-navigator.clipboard.writeText(text);
-
-alert("Copied Successfully!");
-
+function downloadPrompt(){
+  const text=document.getElementById('prompt').textContent;
+  if(!text || text==='Your upgraded prompt will appear here.') return;
+  const blob=new Blob([text],{type:'text/plain'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='Christys-Premium-Clipart-Prompt.txt';
+  a.click();
+  URL.revokeObjectURL(a.href);
 }
-
-generateSuite();
-
+generate();
 </script>
-
 </body>
 </html>
